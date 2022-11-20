@@ -172,6 +172,10 @@ url-prefix("https://invidious.slipfox.xyz/") {
         box-shadow: 0px 10px 17px rgba(0, 0, 0, 0.3);
         transition: all 0.2s;
     }
+    .video-js .vjs-control-bar,
+    .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+        background-color: #2E3440;
+    }
 
     /* Subscribe button */
     #subscribe {
