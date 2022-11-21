@@ -1,57 +1,81 @@
 /* ==UserStyle==
 @name           Invidious Nord
 @namespace      https://github.com/Tsyron/Invidious-Nord
-@version        1.1.0
+@version        1.2.0
 @description    Invidious Website In Nord Style
 @author         Tsyron, Userstyles2918193, 7e57
 ==/UserStyle== */
 @-moz-document url-prefix("https://yewtu.be"), url-prefix("https://invidious.snopyta.org"), url-prefix("https://invidious.kavin.rocks"), url-prefix("https://vid.puffyan.us"), url-prefix("https://invidious.exonip.de"), url-prefix("https://ytprivate.com"), url-prefix("https://invidious.silkky.cloud"), url-prefix("https://inv.riverside.rocks"), url-prefix("https://invidious-us.kavin.rocks"), url-prefix("https://invidious.moomoo.me"), url-prefix("https://y.com.cm"), url-prefix("https://ytb.trom.tf"), url-prefix("https://yt.cyberhost.uk"), url-prefix("https://invidious.blamefran.net"), url-prefix("https://invidious.namazso.eu"), url-prefix("https://invidio.us/"), url-prefix("https://invidious-us.kavin.rocks/"), url-prefix("https://invidious-jp.kavin.rocks/"), url-prefix("https://vid.mint.lgbt/"), url-prefix("https://invidious.osi.kr/"), url-prefix("https://invidio.xamh.de/"), url-prefix("https://yt.didw.to/"), url-prefix("https://yt.artemislena.eu/"), url-prefix("https://yt.mstdn.social/"), url-prefix("https://invidious.rhyshl.live"), url-prefix("https://invidious.weblibre.org"), url-prefix("https://invidious.sethforprivacy.com"), url-prefix("https://yt.artemislena.eu"), url-prefix("https://invidious.projectsegfau.lt"), url-prefix("https://inv.bp.projectsegfau.lt"), url-prefix("https://invidious.dhusch.de"), url-prefix("https://inv.vern.cc"), url-prefix("https://invidious.tiekoetter.com"), url-prefix("https://inv.odyssey346.dev"), url-prefix("https://invidious.baczek.me"), url-prefix("https://inv.privacy.com.de"), url-prefix("https://invidious.esmailelbob.xyz/"), url-prefix("https://invidious.nerdvpn.de/"), url-prefix("https://invidious.flokinet.to/"), url-prefix("https://invidious.slipfox.xyz/"), url-prefix("https://y.com.sb/") {
-    
     /* Whole website Colors */
     .pure-g { /* background*/
         background: #2E3440;
         /* letters*/
-        color: #D8DEE9;
-    }
+        color: #D8DEE9; }
 
     /* Clickable Link colors */
-    
     .dark-theme a { color: #81A1C1; }
-    
+
     .light-theme a { color: #81A1C1; }
-    
+
     .no-theme a { color: #81A1C1 }
+
     a:hover { color: #5E81AC !important }
+
     a:visited { color: #81A1C1 }
+
     a:active { color: #81A1C1 }
 
+    /* Multiple option Select Box */
+    .pure-form input[type="color"], .pure-form input[type="date"], .pure-form input[type="datetime-local"], .pure-form input[type="datetime"], .pure-form input[type="email"], .pure-form input[type="month"], .pure-form input[type="number"], .pure-form input[type="password"], .pure-form input[type="search"], .pure-form input[type="tel"], .pure-form input[type="text"], .pure-form input[type="time"], .pure-form input[type="url"], .pure-form input[type="week"], .pure-form select, .pure-form textarea { box-shadow: transparent 0px 1px 3px inset;
+        border: #D8DEE9;
+        border-radius: 6px;
+        background-color: #3B4252;
+        color: #D8DEE9; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { background-color: #3B4252;
+        color: #aba499;
+        width: 15px }
+
+    ::-webkit-scrollbar-thumb { background-color: #434C5E; }
+
+    /* Button */
+    button.pure-button.pure-button-primary { background-color: #3B4252;
+        color: #D8DEE9;
+        border-radius: 6px; }
+
+    /* Volume color*/
+    span#volume-value { color: white; }
+
     /* Invidious icon / Log in */
-    
     .navbar .index-link { color: #BF616A; }
 
     /* Home Screen/Searchable list of video's */
     /* clickable links colors */
     p { color: #D8DEE9; }
+
     p:hover { color: #BDC2CC; }
 
     p.channel-name { color: #81A1C1; }
+
     p.channel-name:hover { color: #7490AD; }
 
     /* Little icons for extra choice */
     i.icon.ion-md-headset { color: #EBCB8B; }
+
     i.icon.ion-md-headset:hover { color: #D6B97F; }
 
     i.icon.ion-logo-youtube { color: #BF616A; }
+
     i.icon.ion-logo-youtube:hover { color: #A6545C; }
 
     i.icon.ion-md-jet { color: #A3BE8C; }
+
     i.icon.ion-md-jet:hover { color: #8AA177; }
 
     /* Donate/Popular/Trending*/
-    
-    a.feed-menu-item.pure-menu-heading {
-    color:#D8DEE9; }
-    
+    a.feed-menu-item.pure-menu-heading { color: #D8DEE9; }
+
     /* Channel color*/
     b { color: #D8DEE9; }
 
@@ -67,7 +91,7 @@
         box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.3);
         z-index: 99999 }
 
-    .searchbar .pure-form input[type="search"] { border-bottom: 0px !important; }
+    .searchbar .pure-form input[type="search"] { border-bottom-color: #ECEFF475 }
 
     /* Padding and Form */
     .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box { margin: 5px }
@@ -75,11 +99,8 @@
     .pure-form legend { text-align: center;
         border-bottom: hidden }
 
-    .channel-profile { margin-top: 10px;
-        margin-left: 5px; }
-
     .pure-control-group { margin-top: 3px;
-        margin-bottom: 7px }
+        margin-bottom: 7px; }
 
     /* Video player */
     /* Size video player */
@@ -96,10 +117,33 @@
         box-shadow: 0px 10px 17px rgba(0, 0, 0, 0.3);
         transition: all 0.2s; }
 
-    .video-js .vjs-control-bar, .vjs-menu-button-popup .vjs-menu .vjs-menu-content { background-color: #2E3440; 
-        opacity: 0.8; }
-    .video-js.player-style-invidious .vjs-play-progress {
-    background-color: #81A1C1; }
+    /* Color of play button*/
+    .video-js .vjs-slider:hover, .video-js button:hover { color: #81A1C1; }
+
+    .video-js .vjs-big-play-button { border: 0em solid #FFF0; }
+
+    /* Color controls on the player*/
+    .video-js .vjs-control-bar, .vjs-menu-button-popup .vjs-menu .vjs-menu-content { background-color: #2E3440;
+        opacity: 0.9; }
+
+    /* Color bar video */
+    .video-js.player-style-invidious .vjs-play-progress { background-color: #88C0D0;
+        border-radius: 0.3em; }
+
+    /* Hover Selected Option color*/
+    .vjs-menu li.vjs-menu-item:focus, .vjs-menu li.vjs-menu-item:hover { /*background*/
+        background-color: #709EAB;
+        /*text*/
+        color: white; }
+
+    /* Selected option */
+    .vjs-menu li.vjs-selected, .vjs-menu li.vjs-selected:focus, .vjs-menu li.vjs-selected:hover { background-color: #88C0D0;
+        color: white; }
+
+    /* Channel
+    Padding */
+    .channel-profile { margin-top: 10px;
+        margin-left: 5px; }
 
     /* Subscribe button */
     #subscribe { background-color: #BF616A;
@@ -109,23 +153,28 @@
         padding: 7.5px;
         margin-top: -55px }
 
-    /* Download button in video */
-    
-    select#download_widget { background-color: #3B4252;
-        border-color: #3B4252;
-        border: 0px; }
+    /* Download selector  */
+    select#download_widget { font-weight: 700;
+        margin: 0.5em 0; }
+
+    /* Download Button*/
     .no-theme input, .no-theme select, .no-theme textarea { color: #D8DEE9; }
-    
-    button.pure-button.pure-button-primary { background-color: #3B4252; }
+
+    /* White Line (Spacer/padding) */
+    hr { margin: 15px 0;
+        border-color: #ECEFF475 }
+
     /* Comment Section*/
-    
+    /* OC's Channel comment*/
     body a.channel-owner { background-color: #5E81AC;
         padding: 2px 9px;
         border-radius: 7px;
         color: #ECEFF4; }
+
     /* Heart icon */
-        .icon.ion-ios-heart.creator-heart-small-container {
-            color: #BF616A; }
+    .icon.ion-ios-heart.creator-heart-small-container { color: #BF616A; }
+
+    img { border-radius: 10px; }
 
     /* Banner on Channel */
     .pure-u-md-20-24 > .h-box > img { border-radius: 10px;
@@ -136,4 +185,4 @@
         transition: all 0.2s }
 
     /* Hidden items */
-    .pure-g.h-box > .pure-u-1-3, center, hr, #comments > div > b { display: none; } }
+    .pure-g.h-box > .pure-u-1-3, center, #comments > div > b { display: none; } }
