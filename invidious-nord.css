@@ -1,188 +1,466 @@
 /* ==UserStyle==
 @name           Invidious Nord
 @namespace      https://github.com/Tsyron/Invidious-Nord
-@version        1.2.0
+@version        1.3.0
+@license        MIT
 @description    Invidious Website In Nord Style
-@author         Tsyron, Userstyles2918193, 7e57
+@author         Tsyron, Userstyles2918193, 7e57, alan2b7
 ==/UserStyle== */
-@-moz-document url-prefix("https://yewtu.be"), url-prefix("https://invidious.snopyta.org"), url-prefix("https://invidious.kavin.rocks"), url-prefix("https://vid.puffyan.us"), url-prefix("https://invidious.exonip.de"), url-prefix("https://ytprivate.com"), url-prefix("https://invidious.silkky.cloud"), url-prefix("https://inv.riverside.rocks"), url-prefix("https://invidious-us.kavin.rocks"), url-prefix("https://invidious.moomoo.me"), url-prefix("https://y.com.cm"), url-prefix("https://ytb.trom.tf"), url-prefix("https://yt.cyberhost.uk"), url-prefix("https://invidious.blamefran.net"), url-prefix("https://invidious.namazso.eu"), url-prefix("https://invidio.us/"), url-prefix("https://invidious-us.kavin.rocks/"), url-prefix("https://invidious-jp.kavin.rocks/"), url-prefix("https://vid.mint.lgbt/"), url-prefix("https://invidious.osi.kr/"), url-prefix("https://invidio.xamh.de/"), url-prefix("https://yt.didw.to/"), url-prefix("https://yt.artemislena.eu/"), url-prefix("https://yt.mstdn.social/"), url-prefix("https://invidious.rhyshl.live"), url-prefix("https://invidious.weblibre.org"), url-prefix("https://invidious.sethforprivacy.com"), url-prefix("https://yt.artemislena.eu"), url-prefix("https://invidious.projectsegfau.lt"), url-prefix("https://inv.bp.projectsegfau.lt"), url-prefix("https://invidious.dhusch.de"), url-prefix("https://inv.vern.cc"), url-prefix("https://invidious.tiekoetter.com"), url-prefix("https://inv.odyssey346.dev"), url-prefix("https://invidious.baczek.me"), url-prefix("https://inv.privacy.com.de"), url-prefix("https://invidious.esmailelbob.xyz/"), url-prefix("https://invidious.nerdvpn.de/"), url-prefix("https://invidious.flokinet.to/"), url-prefix("https://invidious.slipfox.xyz/"), url-prefix("https://y.com.sb/") {
-    /* Whole website Colors */
-    .pure-g { /* background*/
-        background: #2E3440;
-        /* letters*/
-        color: #D8DEE9; }
+@-moz-document url-prefix("https://yewtu.be"),
+url-prefix("https://invidious.snopyta.org"),
+url-prefix("https://invidious.kavin.rocks"),
+url-prefix("https://vid.puffyan.us"),
+url-prefix("https://invidious.exonip.de"),
+url-prefix("https://ytprivate.com"),
+url-prefix("https://invidious.silkky.cloud"),
+url-prefix("https://inv.riverside.rocks"),
+url-prefix("https://invidious-us.kavin.rocks"),
+url-prefix("https://invidious.moomoo.me"),
+url-prefix("https://y.com.cm"),
+url-prefix("https://ytb.trom.tf"),
+url-prefix("https://yt.cyberhost.uk"),
+url-prefix("https://invidious.blamefran.net"),
+url-prefix("https://invidious.namazso.eu"),
+url-prefix("https://invidio.us/"),
+url-prefix("https://invidious-jp.kavin.rocks/"),
+url-prefix("https://vid.mint.lgbt/"),
+url-prefix("https://invidious.osi.kr/"),
+url-prefix("https://invidio.xamh.de/"),
+url-prefix("https://yt.didw.to/"),
+url-prefix("https://yt.artemislena.eu/"),
+url-prefix("https://yt.mstdn.social/"),
+url-prefix("https://invidious.rhyshl.live"),
+url-prefix("https://invidious.weblibre.org"),
+url-prefix("https://invidious.sethforprivacy.com"),
+url-prefix("https://invidious.projectsegfau.lt"),
+url-prefix("https://inv.bp.projectsegfau.lt"),
+url-prefix("https://invidious.dhusch.de"),
+url-prefix("https://inv.vern.cc"),
+url-prefix("https://invidious.tiekoetter.com"),
+url-prefix("https://inv.odyssey346.dev"),
+url-prefix("https://invidious.baczek.me"),
+url-prefix("https://inv.privacy.com.de"),
+url-prefix("https://invidious.esmailelbob.xyz/"),
+url-prefix("https://invidious.nerdvpn.de/"),
+url-prefix("https://invidious.flokinet.to/"),
+url-prefix("https://invidious.slipfox.xyz/"),
+url-prefix("https://y.com.sb/"),
+domain("invidious") {
+    :root {
+        /*Night mode*/
+        --nNight1: #2E3440;
+        --nNight2: #3B4252;
+        --nNight3: #434C5E;
+        --nNight4: #4C566A;
+        /*Light Mode*/
+        --nLight1: #D8DEE9;
+        --nLight1Hover: #BDC2CC;
+        --nLight2: #E5E9F0;
+        --nLight3: #ECEFF4;
+        --nLight3Space: #ECEFF475;
+        /* Blue tints*/
+        --nFrost1: #8FBCBB;
+        --nFrost2: #88C0D0;
+        --nFrost2Hover: #709EAB;
+        --nFrost3: #81A1C1;
+        --nFrost3Hover: #7490AD;
+        --nFrost4: #5E81AC;
+        --nFrost4Hover: #4F6C90;
+        /* Colorful */
+        --nRed: #BF616A;
+        --nRedHover: #A6545C;
+        --nOrange: #D08770;
+        --nYellow: #EBCB8B;
+        --nYellowHover: #D6B97F;
+        --nGreen: #A3BE8C;
+        --nGreenHover: #8AA177;
+        --nPink: #B48EAD; }
 
-    /* Clickable Link colors */
-    .dark-theme a { color: #81A1C1; }
+    /* Dark Theme */
+    .dark-theme .pure-g {
+        background: var(--nNight1);
+        color: var(--nLight1); }
 
-    .light-theme a { color: #81A1C1; }
+    /* Clickable Links */
+    .dark-theme a,
+    .dark-theme a:visited,
+    .dark-theme a:active {
+        color: var(--nFrost3); }
 
-    .no-theme a { color: #81A1C1 }
-
-    a:hover { color: #5E81AC !important }
-
-    a:visited { color: #81A1C1 }
-
-    a:active { color: #81A1C1 }
+    .dark-theme a:hover {
+        color: var(--nFrost3Hover); }
 
     /* Multiple option Select Box */
-    .pure-form input[type="color"], .pure-form input[type="date"], .pure-form input[type="datetime-local"], .pure-form input[type="datetime"], .pure-form input[type="email"], .pure-form input[type="month"], .pure-form input[type="number"], .pure-form input[type="password"], .pure-form input[type="search"], .pure-form input[type="tel"], .pure-form input[type="text"], .pure-form input[type="time"], .pure-form input[type="url"], .pure-form input[type="week"], .pure-form select, .pure-form textarea { box-shadow: transparent 0px 1px 3px inset;
-        border: #D8DEE9;
+    .dark-theme .pure-form input[type="color"],
+    .dark-theme .pure-form input[type="date"],
+    .dark-theme .pure-form input[type="datetime-local"],
+    .dark-theme .pure-form input[type="datetime"],
+    .dark-theme .pure-form input[type="email"],
+    .dark-theme .pure-form input[type="month"],
+    .dark-theme .pure-form input[type="number"],
+    .dark-theme .pure-form input[type="password"],
+    .dark-theme .pure-form input[type="search"],
+    .dark-theme .pure-form input[type="tel"],
+    .dark-theme .pure-form input[type="text"],
+    .dark-theme .pure-form input[type="time"],
+    .dark-theme .pure-form input[type="url"],
+    .dark-theme .pure-form input[type="week"],
+    .dark-theme .pure-form select,
+    .dark-theme .pure-form textarea {
+        box-shadow: transparent 0px 1px 3px inset;
+        border: var(--nLight1);
         border-radius: 6px;
-        background-color: #3B4252;
-        color: #D8DEE9; }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar { background-color: #3B4252;
-        color: #aba499;
-        width: 15px }
-
-    ::-webkit-scrollbar-thumb { background-color: #434C5E; }
+        background-color: var(--nNight2);
+        color: var(--nLight1); }
 
     /* Button */
-    button.pure-button.pure-button-primary { background-color: #3B4252;
-        color: #D8DEE9;
+    .dark-theme button.pure-button.pure-button-primary {
+        background-color: var(--nNight2);
+        color: var(--nLight1);
         border-radius: 6px; }
 
-    /* Volume color*/
-    span#volume-value { color: white; }
-
-    /* Invidious icon / Log in */
-    .navbar .index-link { color: #BF616A; }
+    /* Donate/Popular/Trending*/
+    .dark-theme a.feed-menu-item.pure-menu-heading,
+    /* Channel color*/
+    .dark-theme b,
+    /* Volume Text Color (Settings)*/
+    .dark-theme span#volume-value {
+        color: var(--nLight1); }
 
     /* Home Screen/Searchable list of video's */
     /* clickable links colors */
-    p { color: #D8DEE9; }
+    .dark-theme p,
+    /* Date, Views Removing hover*/
+    .dark-theme p.video-data:hover {
+        color: var(--nLight1); }
 
-    p:hover { color: #BDC2CC; }
+    .dark-theme p:hover {
+        color: var(--nLight1Hover); }
 
-    p.channel-name { color: #81A1C1; }
+    .dark-theme p.channel-name {
+        color: var(--nFrost3); }
 
-    p.channel-name:hover { color: #7490AD; }
+    .dark-theme p.channel-name:hover {
+        color: var(--nFrost3Hover); }
 
-    /* Little icons for extra choice */
-    i.icon.ion-md-headset { color: #EBCB8B; }
+    /* White line*/
+    .dark-theme .searchbar .pure-form input[type="search"] {
+        border-bottom-color: var(--nLight3Space); }
 
-    i.icon.ion-md-headset:hover { color: #D6B97F; }
+    .dark-theme i.icon.ion-md-jet:hover {
+        color: var(--nGreenHover); }
 
-    i.icon.ion-logo-youtube { color: #BF616A; }
+    /* Color of play button*/
+    .dark-theme .video-js .vjs-slider:hover,
+    .dark-theme .video-js button:hover {
+        color: var(--nLight1); }
 
-    i.icon.ion-logo-youtube:hover { color: #A6545C; }
+    .dark-theme .video-js .vjs-big-play-button {
+        background-color: var(--nRed);
+        border: 0em solid #0000; }
 
-    i.icon.ion-md-jet { color: #A3BE8C; }
+    /* Controls color */
+    .dark-theme .video-js .vjs-control-bar,
+    .dark-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+        background-color: var(--nNight1);
+        opacity: 0.9; }
 
-    i.icon.ion-md-jet:hover { color: #8AA177; }
+    /* Progress Bar Color */
+    .dark-theme .video-js.player-style-invidious .vjs-play-progress {
+        background-color: var(--nFrost2);
+        border-radius: 0.3em; }
+
+    /* Hovering Over Selected Option colors */
+    .dark-theme .vjs-menu li.vjs-menu-item:focus,
+    .dark-theme .vjs-menu li.vjs-menu-item:hover {
+        background-color: var(--nFrost2Hover);
+        color: var(--nLight1); }
+
+    /* The Selected option colors*/
+    .dark-theme .vjs-menu li.vjs-selected,
+    .dark-theme .vjs-menu li.vjs-selected:focus,
+    .dark-theme .vjs-menu li.vjs-selected:hover {
+        background-color: var(--nFrost2);
+        color: var(--nLight1); }
+
+    /* White Line (Spacer/padding) */
+    .dark-theme hr {
+        margin: 15px 0;
+        border-color: var(--nLight3Space); }
+
+    /* Comment Section*/
+    /* Download Button*/
+    .dark-theme input,
+    .dark-theme select,
+    .dark-theme textarea {
+        color: var(--nLight1); }
+
+    /* Light Theme */
+    .light-theme .pure-g {
+        background: var(--nLight4);
+        color: var(--nNight3); }
+
+    /* Clickable Links */
+    .light-theme a,
+    .light-theme a:visited,
+    .light-theme a:active {
+        color: var(--nFrost4); }
+
+    .light-theme a:hover {
+        color: var(--nFrost4Hover); }
+
+    /* Multiple option Select Box */
+    .light-theme .pure-form input[type="color"],
+    .light-theme .pure-form input[type="date"],
+    .light-theme .pure-form input[type="datetime-local"],
+    .light-theme .pure-form input[type="datetime"],
+    .light-theme .pure-form input[type="email"],
+    .light-theme .pure-form input[type="month"],
+    .light-theme .pure-form input[type="number"],
+    .light-theme .pure-form input[type="password"],
+    .light-theme .pure-form input[type="search"],
+    .light-theme .pure-form input[type="tel"],
+    .light-theme .pure-form input[type="text"],
+    .light-theme .pure-form input[type="time"],
+    .light-theme .pure-form input[type="url"],
+    .light-theme .pure-form input[type="week"],
+    .light-theme .pure-form select,
+    .light-theme .pure-form textarea {
+        box-shadow: transparent 0px 1px 3px inset;
+        border: var(--nLight3);
+        border-radius: 6px;
+        background-color: var(--nLight3);
+        color: var(--nNight3); }
+
+    /* Button */
+    .light-theme button.pure-button.pure-button-primary {
+        background-color: var(--nLight3);
+        color: var(--nNight3);
+        border-radius: 6px; }
 
     /* Donate/Popular/Trending*/
-    a.feed-menu-item.pure-menu-heading { color: #D8DEE9; }
-
+    .light-theme a.feed-menu-item.pure-menu-heading,
     /* Channel color*/
-    b { color: #D8DEE9; }
+    .light-theme b,
+    /* Volume Text Color (Settings)*/
+    .light-theme span#volume-value {
+        color: var(--nNight3); }
 
-    /* Searchbar
-       Padding and Form */
-    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box, .pure-g:not(.searchbar) > .searchbar, .pure-form-aligned { border-radius: 10px;
+    /* Home Screen/Searchable list of video's */
+    /* clickable links colors */
+    .light-theme p,
+    .light-theme,
+    /* Date, Views Removing hover*/
+    .light-theme p.video-data:hover {
+        color: var(--nNight1); }
+
+    .light-theme p:hover {
+        color: var(--nNight2); }
+
+    .light-theme p.channel-name {
+        color: var(--nFrost4); }
+
+    .light-theme p.channel-name:hover {
+        color: var(--nFrost4Hover); }
+
+    /* White line*/
+    .light-theme .searchbar .pure-form input[type="search"] {
+        border-bottom-color: var(--nLight3Space); }
+
+    /*Videoplauer*/
+    /* Color of big play button*/
+    .light-theme .video-js .vjs-slider:hover,
+    .light-theme .video-js button:hover {
+        color: var(--nLight1); }
+
+    /* Border*/
+    .light-theme .video-js .vjs-big-play-button {
+        background-color: var(--nRed);
+        border: 0em solid #0000; }
+
+    /* Controls background color */
+    .light-theme .video-js .vjs-control-bar,
+    .light-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+        background-color: var(--nLight3);
+        color: var(--nNight3);
+        opacity: 0.9; }
+
+    /* Progress Bar Color */
+    .light-theme .video-js.player-style-invidious .vjs-play-progress {
+        background-color: var(--nFrost2);
+        border-radius: 0.3em; }
+
+    /* Hovering Over Selected Option colors */
+    .light-theme .vjs-menu li.vjs-menu-item:focus,
+    .light-theme .vjs-menu li.vjs-menu-item:hover {
+        background-color: var(--nFrost2Hover);
+        color: var(--nLight1); }
+
+    /* The Selected option colors*/
+    .light-theme .vjs-menu li.vjs-selected,
+    .light-theme .vjs-menu li.vjs-selected:focus,
+    .light-theme .vjs-menu li.vjs-selected:hover {
+        background-color: var(--nFrost2);
+        color: var(--nNight4); }
+
+    /* White Line (Spacer/padding) */
+    .light-theme hr {
+        margin: 15px 0;
+        border-color: var(--nLight3Space); }
+
+    /* Comment Section*/
+    /* Download Button*/
+    .light-theme input,
+    .light-theme select,
+    .light-theme textarea {
+        color: var(--nNight4); }
+
+    /* No Theme */
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+        background-color: var(--nNight2);
+        width: 15px; }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: var(--nNight3); }
+
+    /* Invidious icon / Log in */
+    .dark-theme .navbar .index-link {
+        color: var(--nRed); }
+
+    .light-theme .navbar .index-link {
+        color: var(--nRed); }
+
+    /* Thumbnail */
+    img {
+        border-radius: 6px; }
+
+    /* Searchbar Padding and Form */
+    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box,
+    .pure-g:not(.searchbar) > .searchbar,
+    .pure-form-aligned {
+        border-radius: 10px;
         padding: 8px;
         transition: all 0.2s }
 
-    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box:hover, .pure-g:not(.searchbar) > .searchbar:hover { transform: scale(1.025);
+    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box:hover,
+    .pure-g:not(.searchbar) > .searchbar:hover {
+        transform: scale(1.025);
         transition: all 0.2s;
         opacity: 1;
         box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.3);
         z-index: 99999 }
 
-    .searchbar .pure-form input[type="search"] { border-bottom-color: #ECEFF475 }
-
     /* Padding and Form */
-    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box { margin: 5px }
+    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box {
+        margin: 5px }
 
-    .pure-form legend { text-align: center;
+    .pure-form legend {
+        text-align: center;
         border-bottom: hidden }
 
-    .pure-control-group { margin-top: 3px;
+    .pure-control-group {
+        margin-top: 3px;
         margin-bottom: 7px; }
 
-    /* Video player */
-    /* Size video player */
-    .pure-u-md-20-24 { width: 100% !important;
+    /* Little icons for extra choice */
+    .dark-theme i.icon.ion-md-headset,
+    .light-theme i.icon.ion-md-headset {
+        color: var(--nYellow); }
+
+    .dark-theme i.icon.ion-md-headset:hover,
+    .light-theme i.icon.ion-md-headset:hover {
+        color: var(--nYellowHover); }
+
+    .dark-theme i.icon.ion-logo-youtube,
+    .light-theme i.icon.ion-logo-youtube {
+        color: var(--nRed); }
+
+    .dark-theme i.icon.ion-logo-youtube:hover,
+    .light-theme i.icon.ion-logo-youtube:hover {
+        color: var(--nRedHover); }
+
+    .dark-theme i.icon.ion-md-jet,
+    .light-theme i.icon.ion-md-jet {
+        color: var(--nGreen); }
+
+    .dark-theme i.icon.ion-md-jet:hover,
+    .light-theme i.icon.ion-md-jet:hover {
+        color: var(--nGreenHover); }
+
+    /* Video player start*/
+    /* Size */
+    .pure-u-md-20-24 {
+        width: 100% !important;
         max-width: 1530px !important;
-        /* centers website*/
-        margin: auto }
+        margin: auto; }
 
     /* Remove black borders */
-    .player-dimensions.vjs-fluid { padding-top: 56.3% !important }
+    .player-dimensions.vjs-fluid {
+        padding-top: 56.3% !important; }
 
-    /* In fullscreen only text can be seen */
-    #player-container { padding-bottom: 54.3% !important;
+    /* Padding & Form */
+    #player-container {
+        padding-bottom: 54.3% !important;
         box-shadow: 0px 10px 17px rgba(0, 0, 0, 0.3);
         transition: all 0.2s; }
 
-    /* Color of play button*/
-    .video-js .vjs-slider:hover, .video-js button:hover { color: #81A1C1; }
-
-    .video-js .vjs-big-play-button { border: 0em solid #FFF0; }
-
-    /* Color controls on the player*/
-    .video-js .vjs-control-bar, .vjs-menu-button-popup .vjs-menu .vjs-menu-content { background-color: #2E3440;
-        opacity: 0.9; }
-
-    /* Color bar video */
-    .video-js.player-style-invidious .vjs-play-progress { background-color: #88C0D0;
-        border-radius: 0.3em; }
-
-    /* Hover Selected Option color*/
-    .vjs-menu li.vjs-menu-item:focus, .vjs-menu li.vjs-menu-item:hover { /*background*/
-        background-color: #709EAB;
-        /*text*/
-        color: white; }
-
-    /* Selected option */
-    .vjs-menu li.vjs-selected, .vjs-menu li.vjs-selected:focus, .vjs-menu li.vjs-selected:hover { background-color: #88C0D0;
-        color: white; }
-
-    /* Channel
-    Padding */
-    .channel-profile { margin-top: 10px;
+    /* Video player End*/
+    /* Channel*/
+    /* Padding */
+    .channel-profile {
+        margin-top: 10px;
         margin-left: 5px; }
 
     /* Subscribe button */
-    #subscribe { background-color: #BF616A;
-        color: #ECEFF4;
+    .dark-theme #subscribe,
+    .light-theme #subscribe {
+        background-color: var(--nRed);
+        color: var(--nNight1);
         border-radius: 6px;
         float: right;
         padding: 7.5px;
         margin-top: -55px }
 
-    /* Download selector  */
-    select#download_widget { font-weight: 700;
-        margin: 0.5em 0; }
-
-    /* Download Button*/
-    .no-theme input, .no-theme select, .no-theme textarea { color: #D8DEE9; }
-
-    /* White Line (Spacer/padding) */
-    hr { margin: 15px 0;
-        border-color: #ECEFF475 }
-
     /* Comment Section*/
-    /* OC's Channel comment*/
-    body a.channel-owner { background-color: #5E81AC;
-        padding: 2px 9px;
-        border-radius: 7px;
-        color: #ECEFF4; }
-
     /* Heart icon */
-    .icon.ion-ios-heart.creator-heart-small-container { color: #BF616A; }
+    .icon.ion-ios-heart.creator-heart-small-container {
+        color: var(--nRed); }
 
-    img { border-radius: 10px; }
+    /* OC Channel comment*/
+    body a.channel-owner {
+        background-color: var(--nFrost4);
+        padding: 2px 9px;
+        border-radius: 6px;
+        color: var(--nLight3); }
 
     /* Banner on Channel */
-    .pure-u-md-20-24 > .h-box > img { border-radius: 10px;
-        background: #4C566A;
+    .pure-u-md-20-24 > .h-box > img {
+        border-radius: 6px;
         margin: 5px;
         opacity: 0.8;
         box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.3);
         transition: all 0.2s }
 
+    /* Download Multiple Section bold */
+    select#download_widget {
+        font-weight: bold;
+        margin: 0.5em 0; }
+
     /* Hidden items */
-    .pure-g.h-box > .pure-u-1-3, center, #comments > div > b { display: none; } }
+    #comments > div > b {
+        display: none; } }
+
+@-moz-document domain("redirect.invidious.io") {
+    :root {
+        --bg-primary: #2E3440;
+        --bg-secondary: #3B4252;
+        --bg-tertiary: #6b7089;
+        --fg-header: #BF616A;
+        --fg-primary: #D8DEE9;
+        --fg-dim: #EBCB8B;
+        --fg-link: #81A1C1;
+        --edge-table: #0000; }
+
+    a:hover {
+        color: #7490AD; } }
