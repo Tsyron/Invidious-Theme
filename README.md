@@ -1,3 +1,4 @@
+
 Works on all instances https://api.invidious.io/ (at least supposed to ;)
 
-![54321](https://user-images.githubusercontent.com/118688422/203115298-3f67cbf4-58e4-47da-bde4-aed08d44f4a6.jpg)
+![Invidious-Nord-thumbnail](https://user-images.githubusercontent.com/118688422/203211076-9e5e74b3-7c93-4ec8-8009-c69066387170.jpg)
