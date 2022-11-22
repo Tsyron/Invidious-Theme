@@ -1,10 +1,12 @@
 /* ==UserStyle==
 @name           Invidious Nord
 @namespace      https://github.com/Tsyron/Invidious-Nord
-@version        1.3.0
+@version        1.4.0
 @license        MIT
 @description    Invidious Website In Nord Style
 @author         Tsyron, Userstyles2918193, 7e57, alan2b7
+@preprocessor   stylus
+@var            select select-theme "Theme" ["Frost", "Colorful"] 
 ==/UserStyle== */
 @-moz-document url-prefix("https://yewtu.be"),
 url-prefix("https://invidious.snopyta.org"),
@@ -44,37 +46,42 @@ url-prefix("https://invidious.esmailelbob.xyz/"),
 url-prefix("https://invidious.nerdvpn.de/"),
 url-prefix("https://invidious.flokinet.to/"),
 url-prefix("https://invidious.slipfox.xyz/"),
-url-prefix("https://y.com.sb/"),
-domain("invidious") {
+url-prefix("https://y.com.sb/") {
     :root {
-        /*Night mode*/
+        /*Darker Tints*/
         --nNight1: #2E3440;
         --nNight2: #3B4252;
         --nNight3: #434C5E;
         --nNight4: #4C566A;
-        /*Light Mode*/
+        /*Lighter Tints */
         --nLight1: #D8DEE9;
         --nLight1Hover: #BDC2CC;
         --nLight2: #E5E9F0;
         --nLight3: #ECEFF4;
         --nLight3Space: #ECEFF475;
-        /* Blue tints*/
-        --nFrost1: #8FBCBB;
-        --nFrost2: #88C0D0;
-        --nFrost2Hover: #709EAB;
-        --nFrost3: #81A1C1;
-        --nFrost3Hover: #7490AD;
-        --nFrost4: #5E81AC;
-        --nFrost4Hover: #4F6C90;
-        /* Colorful */
-        --nRed: #BF616A;
-        --nRedHover: #A6545C;
-        --nOrange: #D08770;
-        --nYellow: #EBCB8B;
-        --nYellowHover: #D6B97F;
-        --nGreen: #A3BE8C;
-        --nGreenHover: #8AA177;
-        --nPink: #B48EAD; }
+        if select-theme=="Frost" {
+            --nColor1: #88C0D0;
+            --nColor1Hover: #709EAB;
+            --nColor2: #8FBCBB;
+            --nColor2Hover: #7CA4A3;
+            --nColor3: #81A1C1;
+            --nColor3Hover: #7490AD;
+            --nColor4: #5E81AC;
+            --nColor4Hover: #4F6C90;
+            --nColor5: transparent;
+            --nColor5Hover: transparent; }
+
+        if select-theme=="Colorful" {
+            --nColor1: #BF616A;
+            --nColor1Hover: #A6545C;
+            --nColor2: #D08770;
+            --nColor2Hover: #B77662;
+            --nColor3: #A3BE8C;
+            --nColor3Hover: #8AA177;
+            --nColor4: #EBCB8B;
+            --nColor4Hover: #D6B97F;
+            --nColor5: #B48EAD;
+            --nColor5Hover: #9A7A94; } }
 
     /* Dark Theme */
     .dark-theme .pure-g {
@@ -85,10 +92,10 @@ domain("invidious") {
     .dark-theme a,
     .dark-theme a:visited,
     .dark-theme a:active {
-        color: var(--nFrost3); }
+        color: var(--nColor3); }
 
     .dark-theme a:hover {
-        color: var(--nFrost3Hover); }
+        color: var(--nColor3Hover); }
 
     /* Multiple option Select Box */
     .dark-theme .pure-form input[type="color"],
@@ -137,18 +144,24 @@ domain("invidious") {
     .dark-theme p:hover {
         color: var(--nLight1Hover); }
 
+    .dark-theme p.length {
+        color: var(--nLight1);
+        background-color: var(--nNight3);
+        padding: 3px;
+        border-radius: 6px; }
+
     .dark-theme p.channel-name {
-        color: var(--nFrost3); }
+        color: var(--nColor3); }
 
     .dark-theme p.channel-name:hover {
-        color: var(--nFrost3Hover); }
+        color: var(--nColor3Hover); }
 
     /* White line*/
     .dark-theme .searchbar .pure-form input[type="search"] {
         border-bottom-color: var(--nLight3Space); }
 
     .dark-theme i.icon.ion-md-jet:hover {
-        color: var(--nGreenHover); }
+        color: var(--nColor4Hover); }
 
     /* Color of play button*/
     .dark-theme .video-js .vjs-slider:hover,
@@ -156,7 +169,7 @@ domain("invidious") {
         color: var(--nLight1); }
 
     .dark-theme .video-js .vjs-big-play-button {
-        background-color: var(--nRed);
+        background-color: var(--nColor1);
         border: 0em solid #0000; }
 
     /* Controls color */
@@ -167,20 +180,20 @@ domain("invidious") {
 
     /* Progress Bar Color */
     .dark-theme .video-js.player-style-invidious .vjs-play-progress {
-        background-color: var(--nFrost2);
+        background-color: var(--nColor1);
         border-radius: 0.3em; }
 
     /* Hovering Over Selected Option colors */
     .dark-theme .vjs-menu li.vjs-menu-item:focus,
     .dark-theme .vjs-menu li.vjs-menu-item:hover {
-        background-color: var(--nFrost2Hover);
+        background-color: var(--nColor22Hover);
         color: var(--nLight1); }
 
     /* The Selected option colors*/
     .dark-theme .vjs-menu li.vjs-selected,
     .dark-theme .vjs-menu li.vjs-selected:focus,
     .dark-theme .vjs-menu li.vjs-selected:hover {
-        background-color: var(--nFrost2);
+        background-color: var(--nColor2);
         color: var(--nLight1); }
 
     /* White Line (Spacer/padding) */
@@ -204,10 +217,10 @@ domain("invidious") {
     .light-theme a,
     .light-theme a:visited,
     .light-theme a:active {
-        color: var(--nFrost4); }
+        color: var(--nColor2); }
 
     .light-theme a:hover {
-        color: var(--nFrost4Hover); }
+        color: var(--nColor2Hover); }
 
     /* Multiple option Select Box */
     .light-theme .pure-form input[type="color"],
@@ -257,11 +270,17 @@ domain("invidious") {
     .light-theme p:hover {
         color: var(--nNight2); }
 
+    .light-theme p.length {
+        color: var(--nNight3);
+        background-color: var(--nLight3);
+        padding: 3px;
+        border-radius: 6px; }
+
     .light-theme p.channel-name {
-        color: var(--nFrost4); }
+        color: var(--nColor2); }
 
     .light-theme p.channel-name:hover {
-        color: var(--nFrost4Hover); }
+        color: var(--nColor2Hover); }
 
     /* White line*/
     .light-theme .searchbar .pure-form input[type="search"] {
@@ -275,7 +294,7 @@ domain("invidious") {
 
     /* Border*/
     .light-theme .video-js .vjs-big-play-button {
-        background-color: var(--nRed);
+        background-color: var(--nColor1);
         border: 0em solid #0000; }
 
     /* Controls background color */
@@ -287,20 +306,20 @@ domain("invidious") {
 
     /* Progress Bar Color */
     .light-theme .video-js.player-style-invidious .vjs-play-progress {
-        background-color: var(--nFrost2);
+        background-color: var(--nColor2);
         border-radius: 0.3em; }
 
     /* Hovering Over Selected Option colors */
     .light-theme .vjs-menu li.vjs-menu-item:focus,
     .light-theme .vjs-menu li.vjs-menu-item:hover {
-        background-color: var(--nFrost2Hover);
+        background-color: var(--nColor2Hover);
         color: var(--nLight1); }
 
     /* The Selected option colors*/
     .light-theme .vjs-menu li.vjs-selected,
     .light-theme .vjs-menu li.vjs-selected:focus,
     .light-theme .vjs-menu li.vjs-selected:hover {
-        background-color: var(--nFrost2);
+        background-color: var(--nColor2);
         color: var(--nNight4); }
 
     /* White Line (Spacer/padding) */
@@ -326,10 +345,10 @@ domain("invidious") {
 
     /* Invidious icon / Log in */
     .dark-theme .navbar .index-link {
-        color: var(--nRed); }
+        color: var(--nColor1); }
 
     .light-theme .navbar .index-link {
-        color: var(--nRed); }
+        color: var(--nColor1); }
 
     /* Thumbnail */
     img {
@@ -366,27 +385,27 @@ domain("invidious") {
     /* Little icons for extra choice */
     .dark-theme i.icon.ion-md-headset,
     .light-theme i.icon.ion-md-headset {
-        color: var(--nYellow); }
+        color: var(--nColor2); }
 
     .dark-theme i.icon.ion-md-headset:hover,
     .light-theme i.icon.ion-md-headset:hover {
-        color: var(--nYellowHover); }
+        color: var(--nColor2Hover); }
 
     .dark-theme i.icon.ion-logo-youtube,
     .light-theme i.icon.ion-logo-youtube {
-        color: var(--nRed); }
+        color: var(--nColor1); }
 
     .dark-theme i.icon.ion-logo-youtube:hover,
     .light-theme i.icon.ion-logo-youtube:hover {
-        color: var(--nRedHover); }
+        color: var(--nColor1Hover); }
 
     .dark-theme i.icon.ion-md-jet,
     .light-theme i.icon.ion-md-jet {
-        color: var(--nGreen); }
+        color: var(--nColor4); }
 
     .dark-theme i.icon.ion-md-jet:hover,
     .light-theme i.icon.ion-md-jet:hover {
-        color: var(--nGreenHover); }
+        color: var(--nColor4Hover); }
 
     /* Video player start*/
     /* Size */
@@ -415,7 +434,7 @@ domain("invidious") {
     /* Subscribe button */
     .dark-theme #subscribe,
     .light-theme #subscribe {
-        background-color: var(--nRed);
+        background-color: var(--nColor1);
         color: var(--nNight1);
         border-radius: 6px;
         float: right;
@@ -425,11 +444,11 @@ domain("invidious") {
     /* Comment Section*/
     /* Heart icon */
     .icon.ion-ios-heart.creator-heart-small-container {
-        color: var(--nRed); }
+        color: var(--nColor1); }
 
     /* OC Channel comment*/
     body a.channel-owner {
-        background-color: var(--nFrost4);
+        background-color: var(--nColor4);
         padding: 2px 9px;
         border-radius: 6px;
         color: var(--nLight3); }
