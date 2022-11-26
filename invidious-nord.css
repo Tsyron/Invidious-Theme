@@ -1,65 +1,65 @@
 /* ==UserStyle==
 @name           Invidious Nord
 @namespace      https://github.com/Tsyron/Invidious-Nord
-@version        1.4.8
+@version        1.4.9
 @license        MIT
 @description    Invidious Website In Nord Style
 @author         Tsyron
 @preprocessor   stylus
 @var            select select-theme "Theme" ["Frost", "Colorful"] 
+@var            select select-corners "Corners" ["Rounded", "VeryRounded", "Squared"]
 ==/UserStyle== */
-@-moz-document url-prefix("https://yewtu.be"),
-url-prefix("https://invidious.snopyta.org"),
-url-prefix("https://invidious.kavin.rocks"),
-url-prefix("https://vid.puffyan.us"),
-url-prefix("https://invidious.exonip.de"),
-url-prefix("https://ytprivate.com"),
-url-prefix("https://invidious.silkky.cloud"),
-url-prefix("https://inv.riverside.rocks"),
-url-prefix("https://invidious-us.kavin.rocks"),
-url-prefix("https://invidious.moomoo.me"),
-url-prefix("https://y.com.cm"),
-url-prefix("https://ytb.trom.tf"),
-url-prefix("https://yt.cyberhost.uk"),
-url-prefix("https://invidious.blamefran.net"),
-url-prefix("https://invidious.namazso.eu"),
-url-prefix("https://invidio.us/"),
-url-prefix("https://invidious-jp.kavin.rocks/"),
-url-prefix("https://vid.mint.lgbt/"),
-url-prefix("https://invidious.osi.kr/"),
-url-prefix("https://invidio.xamh.de/"),
-url-prefix("https://yt.didw.to/"),
-url-prefix("https://yt.artemislena.eu/"),
-url-prefix("https://yt.mstdn.social/"),
-url-prefix("https://invidious.rhyshl.live"),
-url-prefix("https://invidious.weblibre.org"),
-url-prefix("https://invidious.sethforprivacy.com"),
-url-prefix("https://invidious.projectsegfau.lt"),
-url-prefix("https://inv.bp.projectsegfau.lt"),
-url-prefix("https://invidious.dhusch.de"),
-url-prefix("https://inv.vern.cc"),
-url-prefix("https://invidious.tiekoetter.com"),
-url-prefix("https://inv.odyssey346.dev"),
-url-prefix("https://invidious.baczek.me"),
-url-prefix("https://inv.privacy.com.de"),
-url-prefix("https://invidious.esmailelbob.xyz/"),
-url-prefix("https://invidious.nerdvpn.de/"),
-url-prefix("https://invidious.flokinet.to/"),
-url-prefix("https://invidious.slipfox.xyz/"),
-url-prefix("https://y.com.sb/") {
+@-moz-document domain("yewtu.be"),
+domain("invidious.snopyta.org"),
+domain("invidious.kavin.rocks"),
+domain("vid.puffyan.us"),
+domain("invidious.exonip.de"),
+domain("ytprivate.com"),
+domain("invidious.silkky.cloud"),
+domain("inv.riverside.rocks"),
+domain("invidious-us.kavin.rocks"),
+domain("invidious.moomoo.me"),
+domain("y.com.cm"),
+domain("ytb.trom.tf"),
+domain("yt.cyberhost.uk"),
+domain("invidious.blamefran.net"),
+domain("invidious.namazso.eu"),
+domain("invidio.us"),
+domain("invidious-jp.kavin.rocks"),
+domain("vid.mint.lgbt"),
+domain("invidious.osi.kr"),
+domain("invidio.xamh.de"),
+domain("yt.didw.to"),
+domain("yt.artemislena.eu"),
+domain("yt.mstdn.social"),
+domain("invidious.rhyshl.live"),
+domain("invidious.weblibre.org"),
+domain("invidious.sethforprivacy.com"),
+domain("invidious.projectsegfau.lt"),
+domain("inv.bp.projectsegfau.lt"),
+domain("invidious.dhusch.de"),
+domain("inv.vern.cc"),
+domain("invidious.tiekoetter.com"),
+domain("inv.odyssey346.dev"),
+domain("invidious.baczek.me"),
+domain("inv.privacy.com.de"),
+domain("invidious.esmailelbob.xyz"),
+domain("invidious.nerdvpn.de"),
+domain("invidious.flokinet.to"),
+domain("invidious.slipfox.xyz"),
+domain("y.com.sb") {
     :root {
-        /*Darker Tints*/
+        /* Darker Tints */
         --nNight1: #2E3440;
         --nNight2: #3B4252;
         --nNight3: #434C5E;
         --nNight4: #4C566A;
         --nNight4Hover: #21262E;
-        /*Lighter Tints */
+        /* Lighter Tints */
         --nLight1: #D8DEE9;
         --nLight1Hover: #BDC2CC;
         --nLight2: #E5E9F0;
         --nLight3: #ECEFF4;
-        --nLight3Space: #ECEFF475;
         if select-theme=="Frost" {
             --nColor1: #88C0D0;
             --nColor1Hover: #709EAB;
@@ -82,7 +82,16 @@ url-prefix("https://y.com.sb/") {
             --nColor4: #EBCB8B;
             --nColor4Hover: #D6B97F;
             --nColor5: #B48EAD;
-            --nColor5Hover: #9A7A94; } }
+            --nColor5Hover: #9A7A94; }
+
+        if select-corners=="Rounded" {
+            --nCorners: 0.4em; }
+
+        if select-corners=="VeryRounded" {
+            --nCorners: 1.5em; }
+
+        if select-corners=="Squared" {
+            --nCorners: 0em; } }
 
     /* Main Theme : The Dark Theme */
     body.dark-theme,
@@ -90,8 +99,9 @@ url-prefix("https://y.com.sb/") {
         background-color: var(--nNight1);
         color: var(--nLight1); }
 
+    /* Light Theme */
     body.light-theme {
-        background-color: var(--nLight4);
+        background-color: var(--nLight3);
         color: var(--nNight3); }
 
     .dark-theme .pure-g,
@@ -100,7 +110,7 @@ url-prefix("https://y.com.sb/") {
         color: var(--nLight1); }
 
     .light-theme .pure-g {
-        background: var(--nLight4);
+        background: var(--nLight3);
         color: var(--nNight3); }
 
     /* Clickable Links */
@@ -108,22 +118,18 @@ url-prefix("https://y.com.sb/") {
     .dark-theme a:visited,
     .dark-theme a:active,
     .dark-theme footer a,
-    .dark-theme summary,
-    .dark-theme a:not([data-id]) > .icon,
-    .no-theme a,
+    .dark-theme summary .no-theme a,
     .no-theme a:visited,
     .no-theme a:active,
     .no-theme footer a,
-    .no-theme summary,
-    .no-theme a:not([data-id]) > .icon {
+    .no-theme summary {
         color: var(--nColor3) !important; }
 
     .light-theme a,
     .light-theme a:visited,
     .light-theme a:active,
     .light-theme footer a,
-    .light-theme summary,
-    .light-theme a:not([data-id]) > .icon {
+    .light-theme summary {
         color: var(--nColor2) !important; }
 
     .dark-theme a:hover,
@@ -131,24 +137,13 @@ url-prefix("https://y.com.sb/") {
     .dark-theme summary:hover,
     .no-theme a:hover,
     .no-theme footer a:hover,
-    .no-theme summary:hover,
-    {
+    .no-theme summary:hover {
         color: var(--nColor3Hover) !important; }
 
     .light-theme a:hover,
-    .light-theme footer a:hover {
+    .light-theme footer a:hover,
+    .light-theme summary:hover {
         color: var(--nColor2Hover) !important; }
-
-    button.pure-button-primary,
-    body a.pure-button-primary,
-    .channel-owner:hover {
-        background-color: var();
-        color: var(); }
-
-    button.pure-button-primary:hover,
-    body a.pure-button-primary:hover {
-        background-color: var();
-        color: var() !important; }
 
     /* Multiple option Select Box */
     .dark-theme .pure-form input[type="color"],
@@ -185,10 +180,10 @@ url-prefix("https://y.com.sb/") {
     .no-theme .pure-form textarea {
         box-shadow: transparent 0px 1px 3px inset;
         border: var(--nLight1);
-        border-radius: 6px;
+        border-radius: var(--nCorners);
         background-color: var(--nNight2);
         color: var(--nLight1);
-        margin: 3px; }
+        margin: 1px; }
 
     .light-theme .pure-form input[type="color"],
     .light-theme .pure-form input[type="date"],
@@ -207,33 +202,42 @@ url-prefix("https://y.com.sb/") {
     .light-theme .pure-form select,
     .light-theme .pure-form textarea {
         box-shadow: transparent 0px 1px 3px inset;
-        border: var(--nLight3);
-        border-radius: 6px;
-        background-color: var(--nLight3);
+        border: var(--nLight2);
+        border-radius: var(--nCorners);
+        background-color: var(--nLight1);
         color: var(--nNight3);
-        margin: 3px;
-    }
+        margin: 1px; }
 
     /* General Button */
     .dark-theme button.pure-button.pure-button-primary,
     .no-theme button.pure-button.pure-button-primary {
         background-color: var(--nNight2);
         color: var(--nLight1);
-        border-radius: 6px;
-        margin: 3px;
+        border-radius: var(--nCorners);
+        margin: 1px;
         margin-bottom: 10px; }
 
     .light-theme button.pure-button.pure-button-primary {
-        background-color: var(--nLight3);
+        background-color: var(--nLight1);
         color: var(--nNight3);
-        border-radius: 6px;
-        margin: 3px;
+        border-radius: var(--nCorners);
+        margin: 1px;
         margin-bottom: 10px; }
-        
-    
 
     /* Checkbox & Radio */
-    /* background */
+    input[type="checkbox"],
+    [type='radio'] {
+        -webkit-appearance: none;
+        height: 1.3em;
+        width: 1.3em;
+        cursor: pointer;
+        position: relative;
+        -webkit-transition: .10s;
+        border-radius: var(--nCorners);
+        vertical-align: middle;
+        margin: 1px; }
+
+    /* Checkbox & Radio: Background color */
     .dark-theme input[type="checkbox"],
     .no-theme input[type="checkbox"],
     .dark-theme input[type='radio'],
@@ -242,8 +246,9 @@ url-prefix("https://y.com.sb/") {
 
     .light-theme input[type="checkbox"],
     .light-theme input[type='radio'] {
-        background-color: var(--nLight3); }
+        background-color: var(--nLight1); }
 
+    /* Checkbox & Radio: Color check */
     .dark-theme input[type="checkbox"]:checked,
     .no-theme input[type="checkbox"]:checked,
     .dark-theme input[type='radio']:checked,
@@ -262,8 +267,7 @@ url-prefix("https://y.com.sb/") {
     .no-theme input[type="checkbox"]:before,
     .no-theme input[type="checkbox"]:checked:before,
     .no-theme input[type='radio']:before,
-    .no-theme input[type='radio']:checked:before,
-    {
+    .no-theme input[type='radio']:checked:before, {
         position: absolute;
         top: 0;
         left: 0;
@@ -284,39 +288,60 @@ url-prefix("https://y.com.sb/") {
         height: 100%;
         line-height: 1.5em;
         text-align: center;
-        color: var(--nLight3) }
+        color: var(--nLight1) }
 
-    /* Range slider*/
+    /* Checkbox & Radio: Icons */
+    input[type='radio'] {
+        border-radius: 50%; }
+
+    input[type="checkbox"]:checked:before {
+        content: '✔'; }
+
+    /* Range slider: Background */
     .dark-theme input[type='range'],
     .no-theme input[type='range'] {
         background-color: var(--nNight3); }
 
     .light-theme input[type='range'] {
-        background-color: var(--nLight3); }
+        background-color: var(--nLight1); }
 
+    /* Range slider: Slider and Round */
     .dark-theme input[type='range']::-webkit-slider-thumb,
     .no-theme input[type='range']::-webkit-slider-thumb {
         width: 15px;
         border-radius: 15px;
         -webkit-appearance: none;
         height: 15px;
-        background: var(--nColor3Hover);
-        box-shadow: -80px 0 0 75px var(--nColor3); }
+        background: var(--nColor3);
+        box-shadow: -80px 0 0 75px var(--nColor3Hover); }
 
     .light-theme input[type='range']::-webkit-slider-thumb {
         width: 15px;
         border-radius: 15px;
         -webkit-appearance: none;
         height: 15px;
-        background: var(--nColor1Hover);
-        box-shadow: -80px 0 0 75px var(--nColor1); }
+        background: var(--nColor1);
+        box-shadow: -80px 0 0 75px var(--nColor1Hover); }
 
-    /* Home Screen*/
-    /* Donate/Popular/Trending*/
+    /* Range slider: Padding */
+    input[type='range'] {
+        overflow: hidden;
+        -webkit-appearance: none;
+        border-radius: 1em; }
+
+    input[type='range']::-webkit-slider-runnable-track {
+        height: 15px;
+        -webkit-appearance: none; }
+
+    /* Home Screen: Thumbnail */
+    img {
+        border-radius: var(--nCorners); }
+
+    /* Home Screen: Donate/Popular/Trending */
     .dark-theme a.feed-menu-item.pure-menu-heading,
-    /* Channel color*/
+    /* Channel color */
     .dark-theme b,
-    /* Volume Text Color (Settings)*/
+    /* Volume Text Color (Settings) */
     .dark-theme span#volume-value,
     .no-theme a.feed-menu-item.pure-menu-heading,
     .no-theme b,
@@ -328,20 +353,19 @@ url-prefix("https://y.com.sb/") {
     .light-theme span#volume-value {
         color: var(--nNight3); }
 
-    /* Home Screen/Searchable list of video's */
-    /* clickable links colors */
+    /* Home Screen: Clickable links colors */
     .dark-theme p,
-    /* Date, Views Removing hover*/
+    /* Date, Views removing hover */
     .dark-theme p.video-data:hover,
     .no-theme p,
     .no-theme p.video-data:hover {
         color: var(--nLight1); }
 
     .light-theme p,
-    .light-theme,
     .light-theme p.video-data:hover {
         color: var(--nNight4); }
 
+    /* Home Screen: Only Highlights YouTube Video's */
     .dark-theme a[href^="/watch?v="] p:not(.length):hover {
         color: var(--nLight1Hover); }
 
@@ -351,18 +375,30 @@ url-prefix("https://y.com.sb/") {
     .light-theme a[href^="/watch?v="] p:not(.length):hover {
         color: var(--nNight4Hover); }
 
+    /* Home Screen: Length Time*/
+    .dark-theme .length,
     .dark-theme p.length,
+    .no-theme .length,
     .no-theme p.length {
         color: var(--nLight1);
-        background-color: var(--nNight3);
-        padding: 3px;
-        border-radius: 6px; }
+        background-color: var(--nNight3); }
 
+    .light-theme .length,
     .light-theme p.length {
         color: var(--nNight3);
-        background-color: var(--nLight3);
-        padding: 3px;
-        border-radius: 6px; }
+        background-color: var(--nLight3); }
+
+    .dark-theme .length,
+    .dark-theme p.length,
+    .no-theme .length,
+    .no-theme p.length,
+    .light-theme .length,
+    .light-theme p.length {
+        padding: 5px;
+        margin-top: 2px;
+        right: 0.4em;
+        bottom: -0.60em;
+        border-radius: var(--nCorners); }
 
     .dark-theme p.channel-name,
     .no-theme p.channel-name {
@@ -377,48 +413,86 @@ url-prefix("https://y.com.sb/") {
 
     .light-theme p.channel-name:hover {
         color: var(--nColor2Hover); }
-        
-    /* Invidious icon / Log in */
+
+    /* Home Screen: Invidious icon / Log in */
     .dark-theme .navbar .index-link,
     .no-theme .navbar .index-link,
-    .light-theme .navbar .index-link, {
+    .light-theme .navbar .index-link,
+    {
         color: var(--nColor1); }
+
     .dark-theme .pure-menu-heading,
     .no-theme .pure-menu-heading {
-        color: var(--nColor3);
-    }
-    .light-theme .pure-menu-heading {
-        color: var(--nColor2);
-    }
+        color: var(--nColor3); }
 
-    /* Filter box */
-    .no-theme #filters-box,
-    .dark-theme #filters-box {
+    .light-theme .pure-menu-heading {
+        color: var(--nColor2); }
+
+    /* Home Screen: Little icons beside video */
+    .dark-theme i.icon.ion-md-headset,
+    .no-theme i.icon.ion-md-headset,
+    .light-theme i.icon.ion-md-headset {
+        color: var(--nColor2); }
+
+    .dark-theme i.icon.ion-md-headset:hover,
+    .no-theme i.icon.ion-md-headset:hover,
+    .light-theme i.icon.ion-md-headset:hover {
+        color: var(--nColor2Hover); }
+
+    .dark-theme i.icon.ion-logo-youtube,
+    .no-theme i.icon.ion-logo-youtube,
+    .light-theme i.icon.ion-logo-youtube {
+        color: var(--nColor1); }
+
+    .dark-theme i.icon.ion-logo-youtube:hover,
+    .no-theme i.icon.ion-logo-youtube:hover,
+    .light-theme i.icon.ion-logo-youtube:hover {
+        color: var(--nColor1Hover); }
+
+    .dark-theme i.icon.ion-md-jet,
+    .no-theme i.icon.ion-md-jet,
+    .light-theme i.icon.ion-md-jet {
+        color: var(--nColor4); }
+
+    .dark-theme i.icon.ion-md-jet:hover,
+    .no-theme i.icon.ion-md-jet:hover,
+    .light-theme i.icon.ion-md-jet:hover {
+        color: var(--nColor4Hover); }
+
+    /* Searchbar: Zooming Padding */
+    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box,
+    .pure-g:not(.searchbar) > .searchbar,
+    .pure-form-aligned {
+        border-radius: var(--nCorners);
+        padding: 8px;
+        transition: all 0.2s; }
+
+    .h-box {
+        padding-left: 1.1em;
+        padding-right: 1.1em; }
+
+    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box:hover,
+    .pure-g:not(.searchbar) > .searchbar:hover {
+        transform: scale(1.025);
+        transition: all 0.2s;
+        opacity: 1;
+        box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.3);
+        z-index: 99999; }
+
+    /* Search: Filter box */
+    .dark-theme #filters-box,
+    .no-theme #filters-box {
         background-color: var(--nNight1); }
 
     .light-theme #filters-box {
-        background-color: var(--nLight4); }
+        background-color: var(--nLight3); }
 
-    .dark-theme .underlined {
-        border-bottom-color: var(--nLight3Space); }
-
+    .dark-theme .underlined,
+    .no-theme .underlined,
     .light-theme .underlined {
-        border-bottom-color: var(--nLight3Space); }
+        border-bottom-color: var(--nColor2); }
 
-    /* White line*/
-    .dark-theme .searchbar .pure-form input[type="search"],
-    .no-theme .searchbar .pure-form input[type="search"] {
-        border-bottom-color: var(--nLight3Space); }
-
-    .light-theme .searchbar .pure-form input[type="search"] {
-        border-bottom-color: var(--nLight3Space); }
-
-    .dark-theme i.icon.ion-md-jet:hover,
-    .no-theme i.icon.ion-md-jet:hover {
-        color: var(--nColor4Hover); }
-
-    /* Videoplayer */
-    /* Color of play button*/
+    /* Video player: play button: color*/
     .dark-theme .video-js .vjs-slider:hover,
     .dark-theme .video-js button:hover,
     .no-theme .video-js .vjs-slider:hover,
@@ -429,33 +503,46 @@ url-prefix("https://y.com.sb/") {
     .light-theme .video-js button:hover {
         color: var(--nNight4Hover); }
 
-    /* Border*/
+    /* Video player: play button: Border */
     .dark-theme .video-js .vjs-big-play-button,
     .no-theme .video-js .vjs-big-play-button,
+    .light-theme .video-js .vjs-big-play-button,
     /* Volume Slider */
     .dark-theme .video-js .vjs-volume-level,
     .no-theme .video-js .vjs-volume-level,
-    .light-theme .video-js .vjs-big-play-button,
     .light-theme .video-js .vjs-volume-level {
+        border-radius: var(--nCorners);
         background-color: var(--nColor1);
-        border: 0em solid #0000; }
+        border: 0em solid transparent; }
 
-    /* Controls color */
+    /* Video player: Controls: Color */
     .dark-theme .video-js .vjs-control-bar,
     .dark-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
     .no-theme .video-js .vjs-control-bar,
     .no-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
         background-color: var(--nNight1);
-        color: var(--nLight4);
-        opacity: 0.9; }
+        color: var(--nLight3); }
 
     .light-theme .video-js .vjs-control-bar,
     .light-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
         background-color: var(--nLight3);
-        color: var(--nNight3);
-        opacity: 0.9; }
+        color: var(--nNight3); }
 
-    /* Progress Bar Color */
+    /* Video player: Controls: Floating */
+    .dark-theme .video-js .vjs-control-bar,
+    .dark-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
+    .no-theme .video-js .vjs-control-bar,
+    .no-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
+    .light-theme .video-js .vjs-control-bar,
+    .light-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+        opacity: 0.9;
+        border-radius: var(--nCorners);
+        bottom: 0.9%;
+        left: 0.5%;
+        right: 0.5%;
+        width: 99.1%; }
+
+    /* Video player: Controls: Progress Bar: Color */
     .dark-theme .video-js.player-style-invidious .vjs-play-progress,
     .no-theme .video-js.player-style-invidious .vjs-play-progress {
         background-color: var(--nColor1); }
@@ -463,20 +550,17 @@ url-prefix("https://y.com.sb/") {
     .light-theme .video-js.player-style-invidious .vjs-play-progress {
         background-color: var(--nColor1); }
 
-    /* Hovering Over Selected Option colors */
+    /* Video player: Controls: Hovering Over Selected Option colors */
     .dark-theme .vjs-menu li.vjs-menu-item:focus,
     .dark-theme .vjs-menu li.vjs-menu-item:hover,
     .no-theme .vjs-menu li.vjs-menu-item:focus,
-    .no-theme .vjs-menu li.vjs-menu-item:hover {
-        background-color: var(--nColor1Hover);
-        color: var(--nLight1); }
-
+    .no-theme .vjs-menu li.vjs-menu-item:hover,
     .light-theme .vjs-menu li.vjs-menu-item:focus,
     .light-theme .vjs-menu li.vjs-menu-item:hover {
         background-color: var(--nColor1Hover);
         color: var(--nLight1); }
 
-    /* The Selected option colors*/
+    /* Video player: Controls: The Selected option colors*/
     .dark-theme .vjs-menu li.vjs-selected,
     .dark-theme .vjs-menu li.vjs-selected:focus,
     .dark-theme .vjs-menu li.vjs-selected:hover,
@@ -492,15 +576,54 @@ url-prefix("https://y.com.sb/") {
         background-color: var(--nColor1);
         color: var(--nLight3); }
 
-    /* White Line (Spacer/padding) */
-    .dark-theme hr,
-    .no-theme hr,
-    .light-theme hr {
-        margin: 15px 0;
-        border-color: var(--nLight3Space); }
+    /* Video player: Size */
+    .pure-u-md-20-24 {
+        width: 97% !important;
+        max-width: 80em !important;
+        margin: auto; }
 
-    /* Comment Section*/
-    /* Download Button*/
+    /* Video player: Remove black borders */
+    .player-dimensions.vjs-fluid {
+        padding-top: 56.25% !important; }
+
+    #player-container {
+        box-shadow: 0px 10px 17px rgba(0, 0, 0, 0.3);
+        transition: all 0.2s;
+        padding-bottom: 54.25% !important; }
+
+    /* Description: Padding and Form */
+    .channel-profile {
+        margin-top: 10px; }
+
+    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box {
+        margin: 5px }
+
+    .pure-form legend {
+        text-align: center;
+        border-color: var(--nColor4);
+        padding: 15px; }
+
+    .pure-control-group {
+        margin-top: 3px;
+        margin-bottom: 7px; }
+
+    /* Description: Subscribe button */
+    .dark-theme #subscribe,
+    .no-theme #subscribe,
+    .light-theme #subscribe {
+        background-color: var(--nColor1);
+        color: var(--nNight1);
+        border-radius: var(--nCorners);
+        float: right;
+        padding: 7.5px;
+        margin-top: -55px; }
+
+    /* Description: Download Multiple Section Bold */
+    select#download_widget {
+        font-weight: bold;
+        margin-top: 15px; }
+
+    /* Description: Download Button */
     .dark-theme input,
     .dark-theme select,
     .dark-theme textarea,
@@ -529,160 +652,35 @@ url-prefix("https://y.com.sb/") {
         background-color: var(--nNight3); }
 
     .light-theme::-webkit-scrollbar-thumb {
-        background-color: var(--nLight3); }
+        background-color: var(--nLight2); }
 
-    /* All Theme's */
-
-    /* Thumbnail */
-    img {
-        border-radius: 6px; }
-
-    /* Searchbar Padding and Form */
-    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box,
-    .pure-g:not(.searchbar) > .searchbar,
-    .pure-form-aligned {
-        border-radius: 10px;
-        padding: 8px;
-        transition: all 0.2s; }
-    .h-box {
-    padding-left: 1.1em;
-    padding-right: 1.1em; }
-
-    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box:hover,
-    .pure-g:not(.searchbar) > .searchbar:hover {
-        transform: scale(1.025);
-        transition: all 0.2s;
-        opacity: 1;
-        box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.3);
-        z-index: 99999 }
-
-    /* Padding and Form */
-    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box {
-        margin: 5px }
-
-    .pure-form legend {
-        text-align: center;
-        border-bottom: hidden }
-
-    .pure-control-group {
-        margin-top: 3px;
-        margin-bottom: 7px; }
-
-    /* Little icons for extra choice */
-    .dark-theme i.icon.ion-md-headset,
-    .light-theme i.icon.ion-md-headset {
-        color: var(--nColor2); }
-
-    .dark-theme i.icon.ion-md-headset:hover,
-    .light-theme i.icon.ion-md-headset:hover {
-        color: var(--nColor2Hover); }
-
-    .dark-theme i.icon.ion-logo-youtube,
-    .light-theme i.icon.ion-logo-youtube {
-        color: var(--nColor1); }
-
-    .dark-theme i.icon.ion-logo-youtube:hover,
-    .light-theme i.icon.ion-logo-youtube:hover {
-        color: var(--nColor1Hover); }
-
-    .dark-theme i.icon.ion-md-jet,
-    .light-theme i.icon.ion-md-jet {
-        color: var(--nColor4); }
-
-    .dark-theme i.icon.ion-md-jet:hover,
-    .light-theme i.icon.ion-md-jet:hover {
-        color: var(--nColor4Hover); }
-
-    /* Video player start*/
-    /* Size */
-    .pure-u-md-20-24 {
-        width: 100% !important;
-        max-width: 1530px !important;
-        margin: auto; }
-
-    /* Remove black borders */
-    .player-dimensions.vjs-fluid {
-        padding-top: 56.3% !important; }
-
-    /* Padding & Form */
-    #player-container {
-        padding-bottom: 54.3% !important;
-        box-shadow: 0px 10px 17px rgba(0, 0, 0, 0.3);
-        transition: all 0.2s; }
-
-    /* Video player End*/
-    /* Channel*/
-    /* Padding */
-    .channel-profile {
-        margin-top: 10px;
-        margin-left: 5px; }
-
-    /* Subscribe button */
-    .dark-theme #subscribe,
-    .no-theme #subscribe,
-    .light-theme #subscribe {
-        background-color: var(--nColor1);
-        color: var(--nNight1);
-        border-radius: 6px;
-        float: right;
-        padding: 7.5px;
-        margin-top: -55px }
-
-    /* Comment Section*/
-    /* Heart icon */
+    /* Comment Section: Heart icon */
     .icon.ion-ios-heart.creator-heart-small-container {
         color: var(--nColor1); }
 
-    /* OC Channel comment*/
+    /* Comment Section: OC Channel: Comment*/
     body a.channel-owner {
         background-color: var(--nColor1);
         padding: 2px 9px;
-        border-radius: 6px;
+        border-radius: var(--nCorners);
         color: var(--nLight3); }
 
     /* Banner on Channel */
     .pure-u-md-20-24 > .h-box > img {
-        border-radius: 6px;
+        border-radius: var(--nCorners);
         margin: 5px;
         opacity: 0.8;
         box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.3);
         transition: all 0.2s }
 
-    /* Download Multiple Section bold */
-    select#download_widget {
-        font-weight: bold;
-        margin-top: 15px; }
+    /* White Line (Spacer/padding) */
+    .dark-theme hr,
+    .no-theme hr,
+    .light-theme hr {
+        margin: 15px 0;
+        border-color: var(--nColor2); }
 
-    /* Checkbox & Radio */
-    input[type="checkbox"],
-    [type='radio'] {
-        -webkit-appearance: none;
-        height: 1.3em;
-        width: 1.3em;
-        cursor: pointer;
-        position: relative;
-        -webkit-transition: .10s;
-        border-radius: 0.2em;
-        vertical-align: middle;
-        margin: 3px ; }
-
-    input[type='radio'] {
-        border-radius: 50%; }
-
-    input[type="checkbox"]:checked:before {
-        content: '✔'; }
-
-    /* Range */
-    input[type='range'] {
-        overflow: hidden;
-        -webkit-appearance: none;
-        border-radius: 6px; }
-
-    input[type='range']::-webkit-slider-runnable-track {
-        height: 15px;
-        -webkit-appearance: none; }
-
-    /* Selection of text color*/
+    /* Selection of text color */
     ::selection,
     {
         background-color: var(--nColor3);
