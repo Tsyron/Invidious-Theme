@@ -1,53 +1,57 @@
 /* ==UserStyle==
 @name           Invidious Nord
 @namespace      https://github.com/Tsyron/Invidious-Nord
-@version        1.4.9
+@version        1.5.0
 @license        MIT
 @description    Invidious Website In Nord Style
 @author         Tsyron
 @preprocessor   stylus
 @var            select select-theme "Theme" ["Frost", "Colorful"] 
-@var            select select-corners "Corners" ["Rounded", "VeryRounded", "Squared"]
+@var            select select-corners "Corners" {
+                "Rounded": "Rounded",
+                "Very Rounded": "VeryRounded",
+                "Squared": "Squared"
+}
 ==/UserStyle== */
-@-moz-document domain("yewtu.be"),
-domain("invidious.snopyta.org"),
-domain("invidious.kavin.rocks"),
-domain("vid.puffyan.us"),
-domain("invidious.exonip.de"),
-domain("ytprivate.com"),
-domain("invidious.silkky.cloud"),
-domain("inv.riverside.rocks"),
-domain("invidious-us.kavin.rocks"),
-domain("invidious.moomoo.me"),
-domain("y.com.cm"),
-domain("ytb.trom.tf"),
-domain("yt.cyberhost.uk"),
-domain("invidious.blamefran.net"),
-domain("invidious.namazso.eu"),
-domain("invidio.us"),
-domain("invidious-jp.kavin.rocks"),
-domain("vid.mint.lgbt"),
-domain("invidious.osi.kr"),
-domain("invidio.xamh.de"),
-domain("yt.didw.to"),
-domain("yt.artemislena.eu"),
-domain("yt.mstdn.social"),
-domain("invidious.rhyshl.live"),
-domain("invidious.weblibre.org"),
-domain("invidious.sethforprivacy.com"),
-domain("invidious.projectsegfau.lt"),
-domain("inv.bp.projectsegfau.lt"),
-domain("invidious.dhusch.de"),
-domain("inv.vern.cc"),
-domain("invidious.tiekoetter.com"),
+@-moz-document domain("inv.bp.projectsegfau.lt"),
 domain("inv.odyssey346.dev"),
-domain("invidious.baczek.me"),
 domain("inv.privacy.com.de"),
+domain("inv.riverside.rocks"),
+domain("inv.vern.cc"),
+domain("invidio.us"),
+domain("invidio.xamh.de"),
+domain("invidious-jp.kavin.rocks"),
+domain("invidious-us.kavin.rocks"),
+domain("invidious.baczek.me"),
+domain("invidious.blamefran.net"),
+domain("invidious.dhusch.de"),
 domain("invidious.esmailelbob.xyz"),
-domain("invidious.nerdvpn.de"),
+domain("invidious.exonip.de"),
 domain("invidious.flokinet.to"),
+domain("invidious.kavin.rocks"),
+domain("invidious.moomoo.me"),
+domain("invidious.namazso.eu"),
+domain("invidious.nerdvpn.de"),
+domain("invidious.osi.kr"),
+domain("invidious.projectsegfau.lt"),
+domain("invidious.rhyshl.live"),
+domain("invidious.sethforprivacy.com"),
+domain("invidious.silkky.cloud"),
 domain("invidious.slipfox.xyz"),
-domain("y.com.sb") {
+domain("invidious.snopyta.org"),
+domain("invidious.tiekoetter.com"),
+domain("invidious.weblibre.org"),
+domain("vid.mint.lgbt"),
+domain("vid.puffyan.us"),
+domain("y.com.cm"),
+domain("y.com.sb"),
+domain("yewtu.be"),
+domain("youtube.076.ne.jp"),
+domain("yt.artemislena.eu"),
+domain("yt.cyberhost.uk"),
+domain("yt.didw.to"),
+domain("yt.mstdn.social"),
+domain("ytb.trom.tf") {
     :root {
         /* Darker Tints */
         --nNight1: #2E3440;
@@ -91,7 +95,7 @@ domain("y.com.sb") {
             --nCorners: 1.5em; }
 
         if select-corners=="Squared" {
-            --nCorners: 0em; } }
+            --nCorners: false; } }
 
     /* Main Theme : The Dark Theme */
     body.dark-theme,
@@ -118,31 +122,37 @@ domain("y.com.sb") {
     .dark-theme a:visited,
     .dark-theme a:active,
     .dark-theme footer a,
-    .dark-theme summary .no-theme a,
+    .dark-theme summary,
+    .dark-theme a:not([data-id]) > .icon,
     .no-theme a:visited,
     .no-theme a:active,
     .no-theme footer a,
-    .no-theme summary {
-        color: var(--nColor3) !important; }
+    .no-theme summary,
+    .no-theme a:not([data-id]) > .icon {
+        color: var(--nColor3); }
 
     .light-theme a,
     .light-theme a:visited,
     .light-theme a:active,
     .light-theme footer a,
-    .light-theme summary {
-        color: var(--nColor2) !important; }
+    .light-theme summary,
+    .light-theme a:not([data-id]) > .icon {
+        color: var(--nColor2); }
 
     .dark-theme a:hover,
     .dark-theme footer a:hover,
     .dark-theme summary:hover,
+    .dark-theme a:not([data-id]) > .icon:hover,
     .no-theme a:hover,
     .no-theme footer a:hover,
-    .no-theme summary:hover {
+    .no-theme summary:hover,
+    .no-theme a:not([data-id]) > .icon:hover {
         color: var(--nColor3Hover) !important; }
 
     .light-theme a:hover,
     .light-theme footer a:hover,
-    .light-theme summary:hover {
+    .light-theme summary:hover,
+    .light-theme a:not([data-id]) > .icon:hover {
         color: var(--nColor2Hover) !important; }
 
     /* Multiple option Select Box */
@@ -267,7 +277,8 @@ domain("y.com.sb") {
     .no-theme input[type="checkbox"]:before,
     .no-theme input[type="checkbox"]:checked:before,
     .no-theme input[type='radio']:before,
-    .no-theme input[type='radio']:checked:before, {
+    .no-theme input[type='radio']:checked:before,
+    {
         position: absolute;
         top: 0;
         left: 0;
@@ -432,33 +443,33 @@ domain("y.com.sb") {
     .dark-theme i.icon.ion-md-headset,
     .no-theme i.icon.ion-md-headset,
     .light-theme i.icon.ion-md-headset {
-        color: var(--nColor2); }
+        color: var(--nColor2) !important; }
 
     .dark-theme i.icon.ion-md-headset:hover,
     .no-theme i.icon.ion-md-headset:hover,
     .light-theme i.icon.ion-md-headset:hover {
-        color: var(--nColor2Hover); }
+        color: var(--nColor2Hover) !important; }
 
     .dark-theme i.icon.ion-logo-youtube,
     .no-theme i.icon.ion-logo-youtube,
     .light-theme i.icon.ion-logo-youtube {
-        color: var(--nColor1); }
+        color: var(--nColor1) !important; }
 
     .dark-theme i.icon.ion-logo-youtube:hover,
     .no-theme i.icon.ion-logo-youtube:hover,
     .light-theme i.icon.ion-logo-youtube:hover {
-        color: var(--nColor1Hover); }
+        color: var(--nColor1Hover) !important; }
 
     .dark-theme i.icon.ion-md-jet,
     .no-theme i.icon.ion-md-jet,
     .light-theme i.icon.ion-md-jet {
-        color: var(--nColor4); }
+        color: var(--nColor4) !important; }
 
     .dark-theme i.icon.ion-md-jet:hover,
     .no-theme i.icon.ion-md-jet:hover,
     .light-theme i.icon.ion-md-jet:hover {
-        color: var(--nColor4Hover); }
-
+        color: var(--nColor4Hover) !important; }
+        
     /* Searchbar: Zooming Padding */
     .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box,
     .pure-g:not(.searchbar) > .searchbar,
@@ -486,13 +497,13 @@ domain("y.com.sb") {
 
     .light-theme #filters-box {
         background-color: var(--nLight3); }
-
+        
     .dark-theme .underlined,
     .no-theme .underlined,
     .light-theme .underlined {
         border-bottom-color: var(--nColor2); }
 
-    /* Video player: play button: color*/
+    /* Video player: play button: color */
     .dark-theme .video-js .vjs-slider:hover,
     .dark-theme .video-js button:hover,
     .no-theme .video-js .vjs-slider:hover,
@@ -537,11 +548,11 @@ domain("y.com.sb") {
     .light-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
         opacity: 0.9;
         border-radius: var(--nCorners);
-        bottom: 0.9%;
         left: 0.5%;
         right: 0.5%;
-        width: 99.1%; }
-
+        width: 99%;
+        margin-bottom: 0.5%; }
+        
     /* Video player: Controls: Progress Bar: Color */
     .dark-theme .video-js.player-style-invidious .vjs-play-progress,
     .no-theme .video-js.player-style-invidious .vjs-play-progress {
@@ -560,7 +571,7 @@ domain("y.com.sb") {
         background-color: var(--nColor1Hover);
         color: var(--nLight1); }
 
-    /* Video player: Controls: The Selected option colors*/
+    /* Video player: Controls: The Selected option colors */
     .dark-theme .vjs-menu li.vjs-selected,
     .dark-theme .vjs-menu li.vjs-selected:focus,
     .dark-theme .vjs-menu li.vjs-selected:hover,
@@ -585,7 +596,8 @@ domain("y.com.sb") {
     /* Video player: Remove black borders */
     .player-dimensions.vjs-fluid {
         padding-top: 56.25% !important; }
-
+        
+        
     #player-container {
         box-shadow: 0px 10px 17px rgba(0, 0, 0, 0.3);
         transition: all 0.2s;
@@ -658,12 +670,16 @@ domain("y.com.sb") {
     .icon.ion-ios-heart.creator-heart-small-container {
         color: var(--nColor1); }
 
-    /* Comment Section: OC Channel: Comment*/
+    /* Comment Section: OC Channel: Comment */
     body a.channel-owner {
         background-color: var(--nColor1);
-        padding: 2px 9px;
+        padding: 6px 8px;
         border-radius: var(--nCorners);
-        color: var(--nLight3); }
+        color: var(--nLight3) !important; }
+    
+    body a.channel-owner:hover {
+        background-color: var(--nColor1Hover);
+        color: var(--nLight1Hover) !important; }
 
     /* Banner on Channel */
     .pure-u-md-20-24 > .h-box > img {
@@ -681,8 +697,7 @@ domain("y.com.sb") {
         border-color: var(--nColor2); }
 
     /* Selection of text color */
-    ::selection,
-    {
+    ::selection, {
         background-color: var(--nColor3);
         color: var(--nNight1); }
 
