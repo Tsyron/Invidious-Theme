@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious Nord
 @namespace      https://github.com/Tsyron/Invidious-Nord
-@version        1.5.0
+@version        1.5.1
 @license        MIT
 @description    Invidious Website In Nord Style
 @author         Tsyron
@@ -32,7 +32,8 @@ domain("invidious.kavin.rocks"),
 domain("invidious.moomoo.me"),
 domain("invidious.namazso.eu"),
 domain("invidious.nerdvpn.de"),
-domain("invidious.osi.kr"),
+domain("invidious.osi.kr"), 
+domain("invidious.privacydev.net"),
 domain("invidious.projectsegfau.lt"),
 domain("invidious.rhyshl.live"),
 domain("invidious.sethforprivacy.com"),
@@ -49,9 +50,11 @@ domain("yewtu.be"),
 domain("youtube.076.ne.jp"),
 domain("yt.artemislena.eu"),
 domain("yt.cyberhost.uk"),
-domain("yt.didw.to"),
+domain("yt.didw.to"), 
+domain("yt.funami.tech"),
 domain("yt.mstdn.social"),
-domain("ytb.trom.tf") {
+domain("ytb.trom.tf"),
+domain(invidious.drivet.xyz) {
     :root {
         /* Darker Tints */
         --nNight1: #2E3440;
