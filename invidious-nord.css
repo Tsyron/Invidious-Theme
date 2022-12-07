@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious Nord
 @namespace      https://github.com/Tsyron/Invidious-Nord
-@version        1.5.1
+@version        1.5.2
 @license        MIT
 @description    Invidious Website In Nord Style
 @author         Tsyron
@@ -127,11 +127,14 @@ domain(invidious.drivet.xyz) {
     .dark-theme footer a,
     .dark-theme summary,
     .dark-theme a:not([data-id]) > .icon,
+    .dark-theme a:link:not(.pure-button):not(.channel-owner)
+    .no-theme a,
     .no-theme a:visited,
     .no-theme a:active,
     .no-theme footer a,
     .no-theme summary,
-    .no-theme a:not([data-id]) > .icon {
+    .no-theme a:not([data-id]) > .icon,
+    .no-theme a:link:not(.pure-button):not(.channel-owner) {
         color: var(--nColor3); }
 
     .light-theme a,
@@ -139,7 +142,8 @@ domain(invidious.drivet.xyz) {
     .light-theme a:active,
     .light-theme footer a,
     .light-theme summary,
-    .light-theme a:not([data-id]) > .icon {
+    .light-theme a:not([data-id]) > .icon,
+    .light-theme a:link:not(.pure-button):not(.channel-owner) {
         color: var(--nColor2); }
 
     .dark-theme a:hover,
