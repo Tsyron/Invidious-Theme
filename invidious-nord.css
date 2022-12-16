@@ -1,9 +1,9 @@
 /* ==UserStyle==
 @name           Invidious Nord
 @namespace      https://github.com/Tsyron/Invidious-Nord
-@version        1.5.2
+@version        1.5.3
 @license        MIT
-@description    Invidious Website In Nord Style
+@description    Invidious Website In Nord Style/Theme
 @author         Tsyron
 @preprocessor   stylus
 @var            select select-theme "Theme" ["Frost", "Colorful"] 
@@ -25,6 +25,7 @@ domain("invidious-us.kavin.rocks"),
 domain("invidious.baczek.me"),
 domain("invidious.blamefran.net"),
 domain("invidious.dhusch.de"),
+domain("invidious.drivet.xyz"),
 domain("invidious.esmailelbob.xyz"),
 domain("invidious.exonip.de"),
 domain("invidious.flokinet.to"),
@@ -32,12 +33,13 @@ domain("invidious.kavin.rocks"),
 domain("invidious.moomoo.me"),
 domain("invidious.namazso.eu"),
 domain("invidious.nerdvpn.de"),
-domain("invidious.osi.kr"), 
+domain("invidious.osi.kr"),
 domain("invidious.privacydev.net"),
 domain("invidious.projectsegfau.lt"),
 domain("invidious.rhyshl.live"),
 domain("invidious.sethforprivacy.com"),
 domain("invidious.silkky.cloud"),
+domain("invidious.silur.me"),
 domain("invidious.slipfox.xyz"),
 domain("invidious.snopyta.org"),
 domain("invidious.tiekoetter.com"),
@@ -50,11 +52,22 @@ domain("yewtu.be"),
 domain("youtube.076.ne.jp"),
 domain("yt.artemislena.eu"),
 domain("yt.cyberhost.uk"),
-domain("yt.didw.to"), 
+domain("yt.didw.to"),
 domain("yt.funami.tech"),
 domain("yt.mstdn.social"),
 domain("ytb.trom.tf"),
-domain(invidious.drivet.xyz) {
+domain("am74vkcrjp2d5v36lcdqgsj2m6x36tbrkhsruoegwfcizzabnfgf5zyd.onion"),
+domain("c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion"),
+domain("euxxcnhsynwmfidvhjf6uzptsmh4dipkmgdmcmxxuo7tunp3ad2jrwyd.onion"),
+domain("grwp24hodrefzvjjuccrkw3mjq4tzhaaq32amf33dzpmuxe7ilepcmad.onion"),
+domain("inv.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion"),
+domain("invidious.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion"),
+domain("iv.odysfvr23q5wgt7i456o5t3trw2cw5dgn56vbjfbq2m7xsc5vqbqpcyd.onion"),
+domain("kbjggqkzv65ivcqj6bumvp337z6264huv5kpkwuv6gu5yjiskvan7fad.onion"),
+domain("ng27owmagn5amdm7l5s3rsqxwscl5ynppnis5dqcasogkyxcfqn7psid.onion"),
+domain("osbivz6guyeahrwp2lnwyjk2xos342h4ocsxyqrlaopqjuhwn2djiiyd.onion"),
+domain("u2cvlit75owumwpy4dj2hsmvkq7nvrclkpht7xgyye2pyoxhpmclkrad.onion"),
+domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     :root {
         /* Darker Tints */
         --nNight1: #2E3440;
@@ -127,8 +140,7 @@ domain(invidious.drivet.xyz) {
     .dark-theme footer a,
     .dark-theme summary,
     .dark-theme a:not([data-id]) > .icon,
-    .dark-theme a:link:not(.pure-button):not(.channel-owner)
-    .no-theme a,
+    .dark-theme a:link:not(.pure-button):not(.channel-owner) .no-theme a,
     .no-theme a:visited,
     .no-theme a:active,
     .no-theme footer a,
@@ -476,7 +488,7 @@ domain(invidious.drivet.xyz) {
     .no-theme i.icon.ion-md-jet:hover,
     .light-theme i.icon.ion-md-jet:hover {
         color: var(--nColor4Hover) !important; }
-        
+
     /* Searchbar: Zooming Padding */
     .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box,
     .pure-g:not(.searchbar) > .searchbar,
@@ -504,7 +516,7 @@ domain(invidious.drivet.xyz) {
 
     .light-theme #filters-box {
         background-color: var(--nLight3); }
-        
+
     .dark-theme .underlined,
     .no-theme .underlined,
     .light-theme .underlined {
@@ -559,7 +571,7 @@ domain(invidious.drivet.xyz) {
         right: 0.5%;
         width: 99%;
         margin-bottom: 0.5%; }
-        
+
     /* Video player: Controls: Progress Bar: Color */
     .dark-theme .video-js.player-style-invidious .vjs-play-progress,
     .no-theme .video-js.player-style-invidious .vjs-play-progress {
@@ -603,8 +615,8 @@ domain(invidious.drivet.xyz) {
     /* Video player: Remove black borders */
     .player-dimensions.vjs-fluid {
         padding-top: 56.25% !important; }
-        
-        
+
+
     #player-container {
         box-shadow: 0px 10px 17px rgba(0, 0, 0, 0.3);
         transition: all 0.2s;
@@ -683,7 +695,7 @@ domain(invidious.drivet.xyz) {
         padding: 6px 8px;
         border-radius: var(--nCorners);
         color: var(--nLight3) !important; }
-    
+
     body a.channel-owner:hover {
         background-color: var(--nColor1Hover);
         color: var(--nLight1Hover) !important; }
@@ -704,7 +716,8 @@ domain(invidious.drivet.xyz) {
         border-color: var(--nColor2); }
 
     /* Selection of text color */
-    ::selection, {
+    ::selection,
+    {
         background-color: var(--nColor3);
         color: var(--nNight1); }
 
