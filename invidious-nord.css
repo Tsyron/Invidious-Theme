@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious Nord
 @namespace      https://github.com/Tsyron/Invidious-Nord
-@version        1.5.3
+@version        1.5.4
 @license        MIT
 @description    Invidious Website In Nord Style/Theme
 @author         Tsyron
@@ -140,7 +140,8 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     .dark-theme footer a,
     .dark-theme summary,
     .dark-theme a:not([data-id]) > .icon,
-    .dark-theme a:link:not(.pure-button):not(.channel-owner) .no-theme a,
+    .dark-theme a:link:not(.pure-button):not(.channel-owner),
+    .no-theme a,
     .no-theme a:visited,
     .no-theme a:active,
     .no-theme footer a,
