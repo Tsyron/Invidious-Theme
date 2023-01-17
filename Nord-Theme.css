@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious - Nord Theme
 @namespace      https://gitlab.com
-@version        1.5.5
+@version        1.5.6
 @license        GPLv3
 @description    Invidious Website In Nord Theme/Style
 @author         Tsyron
@@ -45,10 +45,13 @@ domain("invidious.snopyta.org"),
 domain("invidious.tiekoetter.com"),
 domain("invidious.weblibre.org"),
 domain("invidious.lidarshield.cloud"),
+domain("invidious.epicsite.xyz"),
 domain("iv.melmac.space"),
+domain("iv.ggtyler.dev"),
 domain("vid.mint.lgbt"),
 domain("vid.priv.au"),
 domain("vid.puffyan.us"),
+domain("watch.thekitty.zone"),
 domain("y.com.cm"),
 domain("y.com.sb"),
 domain("yewtu.be"),
@@ -58,6 +61,7 @@ domain("yt.cyberhost.uk"),
 domain("yt.didw.to"),
 domain("yt.funami.tech"),
 domain("yt.mstdn.social"),
+domain("yt.oelrichsgarcia.de"),
 domain("ytb.trom.tf"),
 domain("am74vkcrjp2d5v36lcdqgsj2m6x36tbrkhsruoegwfcizzabnfgf5zyd.onion"),
 domain("c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion"),
@@ -487,7 +491,7 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     .dark-theme .pure-menu-heading,
     .no-theme .pure-menu-heading,
     .light-theme .pure-menu-heading {
-        color: var(--Color3);
+        color: var(--Color1);
     }
 
     /* Home Screen: Little icons beside video */
