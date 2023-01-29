@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious - High Contrast Theme
 @namespace      https://gitlab.com
-@version        1.0.0
+@version        1.0.1
 @license        GPLv3
 @description    Invidious Website In High Contrast Style/Theme
 @author         Tsyron
@@ -12,56 +12,17 @@
                 "Very Rounded": "VeryRounded",
                 "Squared": "Squared" }
 ==/UserStyle== */
-@-moz-document domain("inv.bp.projectsegfau.lt"),
-domain("inv.odyssey346.dev"),
-domain("inv.privacy.com.de"),
-domain("inv.riverside.rocks"),
-domain("inv.vern.cc"),
-domain("invidio.us"),
-domain("invidio.xamh.de"),
-domain("invidious-jp.kavin.rocks"),
-domain("invidious-us.kavin.rocks"),
-domain("invidious.baczek.me"),
-domain("invidious.blamefran.net"),
-domain("invidious.dhusch.de"),
-domain("invidious.drivet.xyz"),
-domain("invidious.esmailelbob.xyz"),
-domain("invidious.exonip.de"),
-domain("invidious.flokinet.to"),
-domain("invidious.kavin.rocks"),
-domain("invidious.moomoo.me"),
-domain("invidious.namazso.eu"),
-domain("invidious.nerdvpn.de"),
-domain("invidious.osi.kr"),
-domain("invidious.privacydev.net"),
-domain("invidious.projectsegfau.lt"),
-domain("invidious.rhyshl.live"),
-domain("invidious.sethforprivacy.com"),
-domain("invidious.silkky.cloud"),
-domain("invidious.silur.me"),
-domain("invidious.slipfox.xyz"),
-domain("invidious.snopyta.org"),
-domain("invidious.tiekoetter.com"),
-domain("invidious.weblibre.org"),
-domain("invidious.lidarshield.cloud"),
-domain("invidious.epicsite.xyz"),
-domain("iv.melmac.space"),
-domain("iv.ggtyler.dev"),
-domain("vid.mint.lgbt"),
-domain("vid.priv.au"),
-domain("vid.puffyan.us"),
+@-moz-document url-prefix("https://invidious."),
+url-prefix("https://inv."),
+url-prefix("https://invidio."),
+url-prefix("https://invidious-"),
+url-prefix("https://iv."),
+url-prefix("https://vid."),
+url-prefix("https://y.com."),
+url-prefix("https://yt"),
 domain("watch.thekitty.zone"),
-domain("y.com.cm"),
-domain("y.com.sb"),
 domain("yewtu.be"),
 domain("youtube.076.ne.jp"),
-domain("yt.artemislena.eu"),
-domain("yt.cyberhost.uk"),
-domain("yt.didw.to"),
-domain("yt.funami.tech"),
-domain("yt.mstdn.social"),
-domain("yt.oelrichsgarcia.de"),
-domain("ytb.trom.tf"),
 domain("am74vkcrjp2d5v36lcdqgsj2m6x36tbrkhsruoegwfcizzabnfgf5zyd.onion"),
 domain("c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion"),
 domain("euxxcnhsynwmfidvhjf6uzptsmh4dipkmgdmcmxxuo7tunp3ad2jrwyd.onion"),
@@ -723,9 +684,9 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
 @-moz-document domain("redirect.invidious.io") {
     :root {
         --edge-table: #0000;
-        --bg-primary: #232323;
-        --bg-secondary: #3B3B3B;
-        --bg-tertiary: #3B3B3B;
+        --bg-primary: #000;
+        --bg-secondary: #222;
+        --bg-tertiary: #222;
         --fg-primary: #FFF;
         --fg-header: #FFF;
         --fg-dim: #B7B7B7;
