@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious - Dark Theme
 @namespace      https://gitlab.com
-@version        1.0.0
+@version        1.0.1
 @license        GPLv3
 @description    Invidious Website In Dark Style/Theme
 @author         Tsyron
@@ -12,56 +12,17 @@
                 "Very Rounded": "VeryRounded",
                 "Squared": "Squared" }
 ==/UserStyle== */
-@-moz-document domain("inv.bp.projectsegfau.lt"),
-domain("inv.odyssey346.dev"),
-domain("inv.privacy.com.de"),
-domain("inv.riverside.rocks"),
-domain("inv.vern.cc"),
-domain("invidio.us"),
-domain("invidio.xamh.de"),
-domain("invidious-jp.kavin.rocks"),
-domain("invidious-us.kavin.rocks"),
-domain("invidious.baczek.me"),
-domain("invidious.blamefran.net"),
-domain("invidious.dhusch.de"),
-domain("invidious.drivet.xyz"),
-domain("invidious.esmailelbob.xyz"),
-domain("invidious.exonip.de"),
-domain("invidious.flokinet.to"),
-domain("invidious.kavin.rocks"),
-domain("invidious.moomoo.me"),
-domain("invidious.namazso.eu"),
-domain("invidious.nerdvpn.de"),
-domain("invidious.osi.kr"),
-domain("invidious.privacydev.net"),
-domain("invidious.projectsegfau.lt"),
-domain("invidious.rhyshl.live"),
-domain("invidious.sethforprivacy.com"),
-domain("invidious.silkky.cloud"),
-domain("invidious.silur.me"),
-domain("invidious.slipfox.xyz"),
-domain("invidious.snopyta.org"),
-domain("invidious.tiekoetter.com"),
-domain("invidious.weblibre.org"),
-domain("invidious.lidarshield.cloud"),
-domain("invidious.epicsite.xyz"),
-domain("iv.melmac.space"),
-domain("iv.ggtyler.dev"),
-domain("vid.mint.lgbt"),
-domain("vid.priv.au"),
-domain("vid.puffyan.us"),
+@-moz-document url-prefix("https://invidious."),
+url-prefix("https://inv."),
+url-prefix("https://invidio."),
+url-prefix("https://invidious-"),
+url-prefix("https://iv."),
+url-prefix("https://vid."),
+url-prefix("https://y.com."),
+url-prefix("https://yt"),
 domain("watch.thekitty.zone"),
-domain("y.com.cm"),
-domain("y.com.sb"),
 domain("yewtu.be"),
 domain("youtube.076.ne.jp"),
-domain("yt.artemislena.eu"),
-domain("yt.cyberhost.uk"),
-domain("yt.didw.to"),
-domain("yt.funami.tech"),
-domain("yt.mstdn.social"),
-domain("yt.oelrichsgarcia.de"),
-domain("ytb.trom.tf"),
 domain("am74vkcrjp2d5v36lcdqgsj2m6x36tbrkhsruoegwfcizzabnfgf5zyd.onion"),
 domain("c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion"),
 domain("euxxcnhsynwmfidvhjf6uzptsmh4dipkmgdmcmxxuo7tunp3ad2jrwyd.onion"),
@@ -95,23 +56,29 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
             --Color2: var(--Light3);
             --Color2Hover: var(--Light4);
             --Color3: var(--Light3);
-            --Color3Hover: var(--Light4); }
+            --Color3Hover: var(--Light4);
+        }
         if select-color=="Colorful" {
             --Color1: #ff4343;
             --Color1Hover: #e43a3a;
             --Color2: #ff6969;
             --Color2Hover: #e85f5f;
             --Color3: #ff9898;
-            --Color3Hover: #e68787 }
+            --Color3Hover: #e68787
+        }
 
         if select-corners=="SlightlyRounded" {
-            --nCorners: 0.4em; }
+            --nCorners: 0.4em;
+        }
 
         if select-corners=="VeryRounded" {
-            --nCorners: 1.5em; }
+            --nCorners: 1.5em;
+        }
 
         if select-corners=="Squared" {
-            --nCorners: false; } }
+            --nCorners: false;
+        }
+    }
 
     /* Main Theme : The Dark Theme */
     body.dark-theme,
@@ -124,7 +91,7 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     .dark-theme .pure-g,
     .dark-theme .pure-form legend,
     .no-theme .pure-g,
-    .no-theme .pure-form legend, 
+    .no-theme .pure-form legend,
     .light-theme .pure-g,
     .light-theme .pure-form legend {
         background: var(--Dark1);
@@ -203,7 +170,7 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     .no-theme .pure-form input[type="url"],
     .no-theme .pure-form input[type="week"],
     .no-theme .pure-form select,
-    .no-theme .pure-form textarea, 
+    .no-theme .pure-form textarea,
     .light-theme .pure-form input[type="color"],
     .light-theme .pure-form input[type="date"],
     .light-theme .pure-form input[type="datetime-local"],
@@ -227,7 +194,7 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
         color: var(--Light1);
         margin: 1px;
     }
-    
+
     /* General Button */
     .dark-theme button.pure-button.pure-button-primary,
     .no-theme button.pure-button.pure-button-primary,
@@ -285,8 +252,7 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     .light-theme input[type="checkbox"]:before,
     .light-theme input[type="checkbox"]:checked:before,
     .light-theme input[type='radio']:before,
-    .light-theme input[type='radio']:checked:before
-    {
+    .light-theme input[type='radio']:checked:before {
         position: absolute;
         top: 0;
         left: 0;
@@ -316,8 +282,7 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     /* Range slider: Slider and Round */
     .dark-theme input[type='range']::-webkit-slider-thumb,
     .no-theme input[type='range']::-webkit-slider-thumb,
-    .light-theme input[type='range']::-webkit-slider-thumb
-    {
+    .light-theme input[type='range']::-webkit-slider-thumb {
         width: 15px;
         border-radius: 15px;
         -webkit-appearance: none;
