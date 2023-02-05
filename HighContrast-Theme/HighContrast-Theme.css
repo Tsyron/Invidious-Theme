@@ -560,7 +560,7 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     /* Video player: Size */
     .pure-u-md-20-24 {
         width: 97% !important;
-        max-width: 80em !important;
+        max-width: var(--Width) !important;
         margin: auto;
     }
 
