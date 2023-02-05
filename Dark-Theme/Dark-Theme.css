@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious - Dark Theme
 @namespace      https://github.com/Tsyron/Invidious-Theme
-@version        1.0.1
+@version        1.0.2
 @license        GPLv3
 @description    Invidious Website In Dark Style/Theme
 @author         Tsyron
@@ -10,7 +10,8 @@
 @var            select select-corners "Corners" {
                 "Slightly Rounded": "SlightlyRounded",
                 "Very Rounded": "VeryRounded",
-                "Squared": "Squared" }
+                "Squared": "Squared"
+@var            select select-screen-width "Screen Width" ["Default", "Slim", "Wide"] }
 ==/UserStyle== */
 @-moz-document url-prefix("https://invidious."),
 url-prefix("https://inv."),
@@ -78,7 +79,14 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
         if select-corners=="Squared" {
             --nCorners: false;
         }
-    }
+        if select-screen-width=="Default" {
+            --Width: 85em; }
+
+        if select-screen-width=="Slim" {
+            --Width: 70em; }
+
+        if select-screen-width=="Wide" {
+            --Width: 115em; } }
 
     /* Main Theme : The Dark Theme */
     body.dark-theme,
@@ -554,7 +562,7 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     /* Video player: Size */
     .pure-u-md-20-24 {
         width: 97% !important;
-        max-width: 80em !important;
+        max-width: var(--Width) !important;
         margin: auto;
     }
 
