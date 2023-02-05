@@ -671,7 +671,7 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     /* Selection of text color */
     ::selection,
     {
-        background-color: var(--Color3);
+        background-color: var(--Light1);
         color: var(--Dark1);
     }
 
