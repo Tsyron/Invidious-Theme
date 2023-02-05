@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious - High Contrast Theme
 @namespace      https://github.com/Tsyron/Invidious-Theme
-@version        1.0.1
+@version        1.0.2
 @license        GPLv3
 @description    Invidious Website In High Contrast Style/Theme
 @author         Tsyron
@@ -11,6 +11,7 @@
                 "Slightly Rounded": "SlightlyRounded",
                 "Very Rounded": "VeryRounded",
                 "Squared": "Squared" }
+var             select select-screen-width "Screen Width" ["Default", "Slim", "Wide"]
 ==/UserStyle== */
 @-moz-document url-prefix("https://invidious."),
 url-prefix("https://inv."),
