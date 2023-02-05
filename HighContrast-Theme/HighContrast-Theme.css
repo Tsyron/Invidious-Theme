@@ -73,7 +73,16 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
             --nCorners: 1.5em; }
 
         if select-corners=="Squared" {
-            --nCorners: false; } }
+            --nCorners: false; }
+      
+        if select-screen-width=="Default" {
+            --Width: 85em; }
+
+        if select-screen-width=="Slim" {
+            --Width: 70em; }
+
+        if select-screen-width=="Wide" {
+            --Width: 115em; } }
 
     /* Main Theme : The Dark Theme */
     body.dark-theme,
