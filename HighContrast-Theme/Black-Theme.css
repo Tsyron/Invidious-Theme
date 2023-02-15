@@ -1,9 +1,9 @@
 /* ==UserStyle==
-@name           Invidious - High Contrast Theme
+@name           Invidious - Black Theme
 @namespace      https://github.com/Tsyron/Invidious-Theme
-@version        1.0.2
+@version        1.0.4
 @license        GPLv3
-@description    Invidious Website In High Contrast Style/Theme
+@description    Invidious Website In Black Style/Theme
 @author         Tsyron
 @preprocessor   stylus
 @var            select select-color "Colours" ["Dark", "Colorful"]
@@ -11,7 +11,7 @@
                 "Slightly Rounded": "SlightlyRounded",
                 "Very Rounded": "VeryRounded",
                 "Squared": "Squared" }
-var             select select-screen-width "Screen Width" ["Default", "Slim", "Wide"]
+@var            select select-screen-width "Screen Width" ["Default", "Slim", "Wide"]
 ==/UserStyle== */
 @-moz-document url-prefix("https://invidious."),
 url-prefix("https://inv."),
@@ -73,8 +73,8 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
             --nCorners: 1.5em; }
 
         if select-corners=="Squared" {
-            --nCorners: false; }
-      
+            --nCorners: false; } 
+            
         if select-screen-width=="Default" {
             --Width: 85em; }
 
