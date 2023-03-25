@@ -1,12 +1,12 @@
 /* ==UserStyle==
 @name           Invidious - Dark Theme
 @namespace      https://github.com/Tsyron/Invidious-Theme
-@version        1.0.3
+@version        1.0.4
 @license        GPLv3
 @description    Invidious Website In Dark Style/Theme
 @author         Tsyron
 @preprocessor   stylus
-@var            select select-color "Colours" ["Dark", "Colorful"]
+@var            select select-color "Colours" ["Colorful", "Light"]
 @var            select select-corners "Corners" {
                 "Slightly Rounded": "SlightlyRounded",
                 "Very Rounded": "VeryRounded",
@@ -51,13 +51,6 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
         --Link: var(--Light3);
         --LinkHover: var(--Light4);
         /* Colors */
-        if select-color=="Dark" {
-            --Color1: var(--Light3);
-            --Color1Hover: var(--Light4);
-            --Color2: var(--Light3);
-            --Color2Hover: var(--Light4);
-            --Color3: var(--Light3);
-            --Color3Hover: var(--Light4); }
         if select-color=="Colorful" {
             --Color1: #ff4343;
             --Color1Hover: #e43a3a;
@@ -65,6 +58,13 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
             --Color2Hover: #e85f5f;
             --Color3: #ff9898;
             --Color3Hover: #e68787 }
+        if select-color=="Light" {
+            --Color1: var(--Light3);
+            --Color1Hover: var(--Light4);
+            --Color2: var(--Light3);
+            --Color2Hover: var(--Light4);
+            --Color3: var(--Light3);
+            --Color3Hover: var(--Light4); }
 
         if select-corners=="SlightlyRounded" {
             --nCorners: 0.4em; }
@@ -459,14 +459,11 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     .dark-theme .video-js .vjs-control-bar,
     .dark-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
     .no-theme .video-js .vjs-control-bar,
-    .no-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
-        background-color: var(--Dark1);
-        color: var(--Light1); }
-
+    .no-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
     .light-theme .video-js .vjs-control-bar,
     .light-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
-        background-color: var(--Light1);
-        color: var(--Dark1); }
+        background-color: var(--Dark1);
+        color: var(--Light1); }
 
     /* Video player: Controls: Floating */
     .dark-theme .video-js .vjs-control-bar,
