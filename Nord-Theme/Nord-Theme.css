@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious - Nord Theme
 @namespace      https://github.com/Tsyron/Invidious-Theme
-@version        1.5.8
+@version        1.5.9
 @license        GPLv3
 @description    Invidious Website In Nord Theme/Style
 @author         Tsyron
@@ -377,6 +377,12 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     .light-theme a[href^="/watch?v="] p:not(.length):hover {
         color: var(--Night4Hover); }
 
+    /* Home Screen: Screen Width */
+    @media screen and (min-width: 48em) {
+        .pure-u-md-1-12,
+        .pure-u-md-2-24 {
+            width: 0%; } }
+
     /* Home Screen: Length Time*/
     .dark-theme .length,
     .dark-theme p.length,
@@ -415,8 +421,7 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     /* Home Screen: Invidious icon / Log in */
     .dark-theme .navbar .index-link,
     .no-theme .navbar .index-link,
-    .light-theme .navbar .index-link,
-    {
+    .light-theme .navbar .index-link {
         color: var(--Color1); }
 
     .dark-theme .pure-menu-heading,
@@ -467,8 +472,9 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
         padding-left: 1.1em;
         padding-right: 1.1em; }
 
-    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box:hover,
-    .pure-g:not(.searchbar) > .searchbar:hover {
+    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box:hover/*.,
+    .pure-g:not(.searchbar) > .searchbar:hover*/
+    {
         transform: scale(1.025);
         transition: all 0.2s;
         opacity: 1;
