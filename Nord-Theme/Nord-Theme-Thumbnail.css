@@ -1,17 +1,28 @@
 /* ==UserStyle==
-@name           Invidious Nord Thumbnail
+@name           Invidious - Nord Theme Thumbnail
 @namespace      https://github.com/Tsyron/Invidious-Theme
-@version        0.1.0
-@license        MIT
-@description    Invidious Website In Nord Style
+@version        1.6.3
+@license        GPLv3
+@description    Invidious Website In Nord Theme/Style
 @author         Tsyron
 @preprocessor   stylus
-@var            select select-theme "Theme" ["Frost", "Colorful"] 
-@var            select select-corners "Corners" {
-                "Rounded": "Rounded",
-                "Very Rounded": "VeryRounded",
-                "Squared": "Squared"
-}
+
+@var            select select-color "Colours" ["Colourful", "Frost"]
+
+@var            range range-corners "Corners" [18, 0, 35, "px"]
+
+@var            range range-searchbox "Searchbox Corners" [18, 0, 18, "px"]
+
+@var            select select-font "Font" ["YouTube", "Default", "Monospace"]
+
+@var            range range-font "Font Size" [11, 8, 16, "pt"]
+
+@var            range range-screen-width "Screen Width" [95, 48, 170, "em"]
+
+@var            checkbox checkbox-shadow "Shadow" 1
+
+@var            checkbox checkbox-theatre "Theatre Mode at Screen Width (experimental)" 0
+
 ==/UserStyle== */
 @-moz-document url-prefix("https://invidious."),
 url-prefix("https://inv."),
@@ -21,142 +32,1097 @@ url-prefix("https://iv."),
 url-prefix("https://vid."),
 url-prefix("https://y.com."),
 url-prefix("https://yt"),
+url-prefix("tube."),
 domain("watch.thekitty.zone"),
 domain("yewtu.be"),
 domain("youtube.076.ne.jp"),
+domain("youtube.owacon.moe"),
 domain("am74vkcrjp2d5v36lcdqgsj2m6x36tbrkhsruoegwfcizzabnfgf5zyd.onion"),
 domain("c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion"),
 domain("euxxcnhsynwmfidvhjf6uzptsmh4dipkmgdmcmxxuo7tunp3ad2jrwyd.onion"),
 domain("grwp24hodrefzvjjuccrkw3mjq4tzhaaq32amf33dzpmuxe7ilepcmad.onion"),
-domain("inv.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion"),
-domain("invidious.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion"),
-domain("iv.odysfvr23q5wgt7i456o5t3trw2cw5dgn56vbjfbq2m7xsc5vqbqpcyd.onion"),
 domain("kbjggqkzv65ivcqj6bumvp337z6264huv5kpkwuv6gu5yjiskvan7fad.onion"),
 domain("ng27owmagn5amdm7l5s3rsqxwscl5ynppnis5dqcasogkyxcfqn7psid.onion"),
 domain("osbivz6guyeahrwp2lnwyjk2xos342h4ocsxyqrlaopqjuhwn2djiiyd.onion"),
 domain("u2cvlit75owumwpy4dj2hsmvkq7nvrclkpht7xgyye2pyoxhpmclkrad.onion"),
-domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
+domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion"),
+domain("invbp.pjsfkvpxlinjamtawaksbnnaqs2fc2mtvmozrzckxh7f3kis6yea25ad.onion"),
+domain("invidiousge2cq2qegp4vdzsfu6mvpqdf6dtcyzmqbv7yx2spvkkajad.onion"),
+domain("inv.vern.i2p"),
+domain("pjsfhqamc7k6htnumrvn4cwqqdoggeepj7u5viyimgnxg3gar72q.b32.i2p"),
+domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
+
+    /* Darker Tints */
+    d-1=#2E3440
+    d-2=#3B4252
+    d-3=#434C5E
+    d-4=#4C566A
+    d-4-h=rgba(d-1, 0.9)
+    d-4-space=rgba(d-4, 1)
+    
+    /* Lighter Tints */
+    l-1=#D8DEE9
+    l-1-space=rgba(l-1, 0.3)
+    l-1-h=rgba(l-1, 0.9)
+    l-2=#E5E9F0
+    l-3=#ECEFF4
+    
+    /* Dark Theme */
+    bg-d-1=d-1
+    bg-d-2=d-2
+    bg-d-3=d-3
+    bg-d-4=d-4
+    bg-d-4-space=d-4-space
+        
+    fg-d-1=l-1
+    fg-d-1-h=l-1-h
+    fg-d-2=l-2
+    fg-d-3=l-3
+    
+    /* Light Theme */
+    bg-l-1=l-1
+    bg-l-2=l-2
+    bg-l-3=l-3
+    bg-l-1-space=l-1-space
+        
+    fg-l-1=d-1
+    fg-l-2=d-2
+    fg-l-3=d-3
+    fg-l-4=d-4
+    fg-l-4-h=d-4-h
+    
+    /* Linked */
+    link-d=#81A1C1
+    link-d-h=rgba(link-d, 0.9)
+    
+    link-l=#5E81AC
+    link-l-h=rgba(link-l, 0.9)
+    
+    /* Colours */
+    red-n=#BF616A
+    red-n-hover=rgba(red-n, 0.9)
+    red-n-watched=rgba(red-n, 0.4)
+    orange-n=#D08770
+    orange-n-hover=rgba(orange-n, 0.9)
+    pink-n=#B48EAD
+    pink-n-h=rgba(pink-n, 0.9)
+    yellow-n=#EBCB8B
+    yellow-n-h=rgba(yellow-n, 0.9)
+    green-n=#A3BE8C
+    green-n-h=rgba(green-n, 0.9)
+    
+    
+    nord-1=#88C0D0
+    nord-1-h=rgba(nord-1, 0.9)
+    nord-1-watched=rgba(nord-1, 0.4)
+    nord-2=#5E81AC
+    nord-2-h=rgba(nord-2, 0.9)
+    nord-3=nord-2
+    nord-3-h=rgba(nord-3, 0.9)
+    nord-4=#8FBCBB
+    nord-4-h=rgba(nord-4, 0.9)
+    nord-5=nord-1
+    nord-5-h=rgba(nord-5, 0.9)
+    
+    /* Shadow */
+    shadow=rgba(0, 0, 0, 0.3)
+
     :root {
-        /* Darker Tints */
-        --nNight1: #2E3440;
-        --nNight2: #3B4252;
-        --nNight3: #434C5E;
-        --nNight4: #4C566A;
-        --nNight4Hover: #21262E;
-        /* Lighter Tints */
-        --nLight1: #D8DEE9;
-        --nLight1Hover: #BDC2CC;
-        --nLight2: #E5E9F0;
-        --nLight3: #ECEFF4;
-        if select-theme=="Frost" {
-            --nColor1: #88C0D0;
-            --nColor1Hover: #709EAB;
-            --nColor2: #8FBCBB;
-            --nColor2Hover: #7CA4A3;
-            --nColor3: #81A1C1;
-            --nColor3Hover: #7490AD;
-            --nColor4: #5E81AC;
-            --nColor4Hover: #4F6C90;
-            --nColor5: transparent;
-            --nColor5Hover: transparent; }
+        if select-color=="Colourful" {
+            --Color1: red-n;
+            --Color1Hover: red-n-hover;
+            --Color1Watched: red-n-watched;
+            --Color2: orange-n;
+            --Color2Hover: orange-n-hover;
+            --Color3: pink-n;
+            --Color3Hover: pink-n-h;
+            --Color4: yellow-n;
+            --Color4Hover: yellow-n-h;
+            --Color5: green-n;
+            --Color5Hover: green-n-h; }
 
-        if select-theme=="Colorful" {
-            --nColor1: #BF616A;
-            --nColor1Hover: #A6545C;
-            --nColor2: #D08770;
-            --nColor2Hover: #B77662;
-            --nColor3: #A3BE8C;
-            --nColor3Hover: #8AA177;
-            --nColor4: #EBCB8B;
-            --nColor4Hover: #D6B97F;
-            --nColor5: #B48EAD;
-            --nColor5Hover: #9A7A94; }
+        if select-color=="Frost" {
+            --Color1: nord-1;
+            --Color1Hover: nord-1-h;
+            --Color1Watched: nord-1-watched;
+            --Color2: nord-2;
+            --Color2Hover: nord-2-h;
+            --Color3: nord-3;
+            --Color3Hover: nord-3-h;
+            --Color4: nord-4;
+            --Color4Hover: nord-4-h;
+            --Color5: nord-5;
+            --Color5Hover: nord-5-h; }
+        
+        if select-font=="YouTube" {
+            --Font: Roboto, Arial, sans-serif !important; }
+            
+        if select-font=="Default" {
+            --Font: inherit; }
+        
+        if select-font=="Monospace" {
+            --Font: monospace; } }
 
-        if select-corners=="Rounded" {
-            --nCorners: 0.4em; }
+    /* Dark Theme */
+    @media (prefers-color-scheme: dark) {
 
-        if select-corners=="VeryRounded" {
-            --nCorners: 1.5em; }
+        body,
+        .pure-g,
+        .pure-form legend {
+            background: bg-d-1;
+            color: fg-d-1; }
 
-        if select-corners=="Squared" {
-            --nCorners: false; } }
+        /* Clickable Links */
+        a:not(.navbar .index-link),
+        a:active:not(.navbar .index-link),
+        a:visited:not(.navbar .index-link),
+        footer a,
+        summary,
+        a:not([data-id]) > .icon {
+            color: link-d !important; }
+            
 
-    /* Main Theme : The Dark Theme */
-    body.dark-theme,
-    body.no-theme {
-        background-color: var(--nNight1);
-        color: var(--nLight1); }
+        a:hover,
+        footer a:hover,
+        summary:hover,
+        a:not([data-id]) > .icon:hover,
+        a:link:not(.pure-button):not(.channel-owner):hover {
+            color: link-d-h !important; }
 
-    .dark-theme .pure-g,
-    .no-theme .pure-g {
-        background: var(--nNight1);
-        color: var(--nLight1); }
+        /* Multiple option Select Box */
+        .pure-form {
+            input[type="color"],
+            input[type="date"],
+            input[type="datetime-local"],
+            input[type="datetime"],
+            input[type="email"],
+            input[type="month"],
+            input[type="number"],
+            input[type="password"],
+            input[type="tel"],
+            input[type="text"],
+            input[type="time"],
+            input[type="url"],
+            input[type="week"],
+            select,
+            textarea {
+                box-shadow: transparent 0px 1px 3px inset;
+                border: transparent;
+                border-radius: range-corners;
+                background-color: bg-d-2;
+                color: fg-d-1; } }
 
-    /* Multiple option Select Box */
-    .dark-theme .pure-form input[type="search"],
-    .no-theme .pure-form input[type="search"],
-    {
-        box-shadow: transparent 0px 1px 3px inset;
-        border: var(--nLight1);
-        border-radius: var(--nCorners);
-        background-color: var(--nNight2);
-        color: var(--nLight1);
-        margin: 1px; }
+        /* General Button */
+        button.pure-button.pure-button-primary {
+            background-color: bg-d-2;
+            color: fg-d-1; }
+
+        /* Checkbox & Radio: Background color */
+        input[type="checkbox"],
+        input[type="checkbox"]:before,
+        input[type="checkbox"]:checked:before,
+        input[type='radio'],
+        input[type='radio']:before,
+        input[type='radio']:checked:before {
+            color: bg-d-3; }
+
+        /* Range slider: Background */
+        input[type='range'] {
+            background-color: bg-d-3; }
+
+        /* Home Screen: Clickable links colors */
+        p,
+        p.video-data:hover {
+            color: fg-d-1; }
+
+        /* Home Screen: Donate/Popular/Trending */
+        a.feed-menu-item.pure-menu-heading {
+            color: link-d; }
+
+        /* Home Screen: Only Highlights YouTube Video's */
+        a[href^="/watch?v="] p:not(.length):hover {
+            color: fg-d-1-h; }
+
+        /* Home Screen: Watched */
+        .watched {
+            background-color: bg-d-3;
+            color: fg-d-1; }
+
+        /* Home Screen: Length Time*/
+        .length,
+        p.length {
+            color: fg-d-1;
+            background-color: bg-d-3; }
+
+        p.channel-name {
+            color: link-d; }
+
+        p.channel-name:hover {
+            color: link-d-h; }
+
+        /* Search: Filter box */
+        #filters-box {
+            background: bg-d-1 !important; }
+
+        /* Searchbox: background color */
+        .pure-form input[type="search"] {
+            border: fg-d-1;
+            background-color: bg-d-2;
+            color: fg-d-1; }
+
+        /* Video Player */
+        .video-js {
+            /* Video player: play button: color */
+            .vjs-big-play-button .vjs-icon-placeholder {
+                color: l-1; }
+
+            /* Video player: Controls: Color */
+            .vjs-control-bar,
+            .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+                background-color: bg-d-1;
+                color: fg-d-3; }
+
+            /* Button Hover */
+            button:hover {
+                color: fg-d-3; }
+                
+            /* Video player: Controls: Hovering Over Selected Option colors */
+            .vjs-menu li.vjs-menu-item:focus,
+            .vjs-menu li.vjs-menu-item:hover {
+                background-color: var(--Color1Hover);
+                color: l-1; }
+
+            /* Video player: Controls: The Selected option colors */
+            .vjs-menu li.vjs-selected,
+            .vjs-menu li.vjs-selected:focus,
+            .vjs-menu li.vjs-selected:hover {
+                background-color: var(--Color1);
+                color: fg-d-1; }
+
+            /* Video player: Share Links */
+            .vjs-share__short-link,
+            .vjs-share__btn,
+            .vjs-share__short-link-wrapper {
+                font-family: sans-serif;
+                background-color: bg-d-2;
+                color: fg-d-1; }
+
+            .vjs-videojs-share_open .vjs-modal-dialog .vjs-close-button,
+            .vjs-share__subtitle,
+            .vjs-share__title {
+                font-family: sans-serif;
+                color: fg-d-1; }
+
+            .vjs-videojs-share_open .vjs-modal-dialog .vjs-modal-dialog-content,
+            .vjs-modal-dialog {
+                background: fg-d-1; }
+
+            .vjs-modal-dialog .vjs-modal-dialog-content,
+            .vjs-modal-dialog, .vjs-modal-dialog-content {
+                background: bg-d-1 !important; }
+
+            /* Video player: Settings */
+            .vjs-text-track-settings legend {
+                color: fg-d-1; }
+
+            /* Video Player: Text */
+            .vjs-icon-placeholder,
+            .vjs-icon-share {
+                color: fg-d-1; }
+
+            /* Video Player: Sliders */
+            .vjs-play-progress,
+            .vjs-volume-level {
+                color: fg-d-1; } }
+                
+        /* Video player: Controls: Progress Bar: Color */
+        .video-js.player-style-invidious .vjs-play-progress {
+            background-color: var(--Color1); }
+
+        /* Subscribe button */
+        #subscribe,
+        #subscribe:hover {
+            color: bg-d-1 !important; }
+
+        /* Comment Section: OC Channel: Comment */
+        body a.channel-owner,
+        body a.channel-owner:hover,
+        .channel-owner:visited,
+        .channel-owner .icon.ion.ion-md-checkmark-circle {
+            color: bg-d-1 !important; }
+
+        if select-color=="Colourful" {
+            #subscribe,
+            #subscribe:hover {
+                color: bg-l-3 !important; }
+
+            body a.channel-owner,
+            body a.channel-owner:hover,
+            .channel-owner:visited,
+            .channel-owner .icon.ion.ion-md-checkmark-circle {
+                color: bg-l-3 !important; } }
+
+        /* Description: Download Button */
+        input,
+        select,
+        textarea {
+            background-color: bg-d-2;
+            color: fg-d-1; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar,
+        ::-webkit-scrollbar {
+            background-color: bg-d-2; }
+
+        ::-webkit-scrollbar-thumb,
+        ::-webkit-scrollbar-thumb {
+            background-color: bg-d-3; }
+
+        /* Selection of text color */
+        ::selection,
+        ::selection {
+            background-color: fg-d-1 !important;
+            color: bg-d-3 !important; }
+
+        /* White Line (Spacer/padding) */
+        hr,
+        .pure-form legend,
+        .pure-form-aligned legend,
+        .underlined {
+            border-color: bg-d-4-space; }
+
+        /* Settings: Volume Text */
+        span#volume-value {
+            color: fg-d-1; }
+            
+        /* Placeholder */
+        ::placeholder {
+            color: fg-d-1; } }
+
+    .dark-theme {
+
+        body,
+        .pure-g,
+        .pure-form legend {
+            background: bg-d-1;
+            color: fg-d-1; }
+
+        /* Clickable Links */
+        a:not(.pure-menu-heading),
+        a:active:not(.pure-menu-heading),
+        a:visited:not(.pure-menu-heading),
+        footer a,
+        summary,
+        a:not([data-id]) > .icon,
+        a:link:not(.pure-button):not(.channel-owner) {
+            color: link-d !important; }
+
+        a:hover,
+        footer a:hover,
+        summary:hover,
+        a:not([data-id]) > .icon:hover,
+        a:link:not(.pure-button):not(.channel-owner):hover {
+            color: link-d-h !important; }
+
+        /* Multiple option Select Box */
+        .pure-form {
+            input[type="color"],
+            input[type="date"],
+            input[type="datetime-local"],
+            input[type="datetime"],
+            input[type="email"],
+            input[type="month"],
+            input[type="number"],
+            input[type="password"],
+            input[type="tel"],
+            input[type="text"],
+            input[type="time"],
+            input[type="url"],
+            input[type="week"],
+            select,
+            textarea {
+                box-shadow: transparent 0px 1px 3px inset;
+                border: transparent;
+                border-radius: range-corners;
+                background-color: bg-d-2;
+                color: fg-d-1; } }
+
+        /* General Button */
+        button.pure-button.pure-button-primary {
+            background-color: bg-d-2;
+            color: fg-d-1; }
+
+        /* Checkbox & Radio: Background color */
+        input[type="checkbox"],
+        input[type="checkbox"]:before,
+        input[type="checkbox"]:checked:before,
+        input[type='radio'],
+        input[type='radio']:before,
+        input[type='radio']:checked:before {
+            color: bg-d-3; }
+
+        /* Range slider: Background */
+        input[type='range'] {
+            background-color: bg-d-3; }
+
+        /* Home Screen: Clickable links colors */
+        p,
+        p.video-data:hover {
+            color: fg-d-1; }
+
+        /* Home Screen: Donate/Popular/Trending */
+        a.feed-menu-item.pure-menu-heading {
+            color: link-d; }
+
+        /* Home Screen: Only Highlights YouTube Video's */
+        a[href^="/watch?v="] p:not(.length):hover {
+            color: fg-d-1-h; }
+
+        /* Home Screen: Watched */
+        .watched {
+            background-color: bg-d-3;
+            color: fg-d-1; }
+
+        /* Home Screen: Length Time*/
+        .length,
+        p.length {
+            color: fg-d-1;
+            background-color: bg-d-3; }
+
+        p.channel-name {
+            color: link-d; }
+
+        p.channel-name:hover {
+            color: link-d-h; }
+
+        /* Search: Filter box */
+        #filters-box {
+            background: bg-d-1 !important; }
+
+        /* Searchbox: background color */
+        .pure-form input[type="search"] {
+            border: fg-d-1;
+            background-color: bg-d-2;
+            color: fg-d-1; }
+
+        /* Video Player */
+        .video-js {
+            /* Video player: play button: color */
+            .vjs-big-play-button .vjs-icon-placeholder {
+                color: l-1; }
+
+            /* Video player: Controls: Color */
+            .vjs-control-bar,
+            .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+                background-color: bg-d-1;
+                color: fg-d-3; }
+
+            /* Button Hover */
+            button:hover {
+                color: fg-d-3; }
+                
+            /* Video player: Controls: Hovering Over Selected Option colors */
+            .vjs-menu li.vjs-menu-item:focus,
+            .vjs-menu li.vjs-menu-item:hover {
+                background-color: var(--Color1Hover);
+                color: l-1; }
+
+            /* Video player: Controls: The Selected option colors */
+            .vjs-menu li.vjs-selected,
+            .vjs-menu li.vjs-selected:focus,
+            .vjs-menu li.vjs-selected:hover {
+                background-color: var(--Color1);
+                color: fg-d-1; }
+
+            /* Video player: Share Links */
+            .vjs-share__short-link,
+            .vjs-share__btn,
+            .vjs-share__short-link-wrapper {
+                font-family: sans-serif;
+                background-color: bg-d-2;
+                color: fg-d-1; }
+
+            .vjs-videojs-share_open .vjs-modal-dialog .vjs-close-button,
+            .vjs-share__subtitle,
+            .vjs-share__title {
+                font-family: sans-serif;
+                color: fg-d-1; }
+
+            .vjs-videojs-share_open .vjs-modal-dialog .vjs-modal-dialog-content,
+            .vjs-modal-dialog {
+                background: fg-d-1; }
+
+            .vjs-modal-dialog .vjs-modal-dialog-content,
+            .vjs-modal-dialog, .vjs-modal-dialog-content {
+                background: bg-d-1 !important; }
+
+            /* Video player: Settings */
+            .vjs-text-track-settings legend {
+                color: fg-d-1; }
+
+            /* Video Player: Text */
+            .vjs-icon-placeholder,
+            .vjs-icon-share {
+                color: fg-d-1; }
+
+            /* Video Player: Sliders */
+            .vjs-play-progress,
+            .vjs-volume-level {
+                color: fg-d-1; } }
+                
+        /* Video player: Controls: Progress Bar: Color */
+        .video-js.player-style-invidious .vjs-play-progress {
+            background-color: var(--Color1); }
+
+        /* Subscribe button */
+        #subscribe,
+        #subscribe:hover {
+            color: bg-d-1 !important; }
+
+        /* Comment Section: OC Channel: Comment */
+        body a.channel-owner,
+        body a.channel-owner:hover,
+        .channel-owner:visited,
+        .channel-owner .icon.ion.ion-md-checkmark-circle {
+            color: bg-d-1 !important; }
+
+        if select-color=="Colourful" {
+            #subscribe,
+            #subscribe:hover {
+                color: bg-l-3 !important; }
+
+            body a.channel-owner,
+            body a.channel-owner:hover,
+            .channel-owner:visited,
+            .channel-owner .icon.ion.ion-md-checkmark-circle {
+                color: bg-l-3 !important; } }
+
+        /* Description: Download Button */
+        input,
+        select,
+        textarea {
+            background-color: bg-d-2;
+            color: fg-d-1; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar,
+        ::-webkit-scrollbar {
+            background-color: bg-d-2; }
+
+        ::-webkit-scrollbar-thumb,
+        ::-webkit-scrollbar-thumb {
+            background-color: bg-d-3; }
+
+        /* Selection of text color */
+        ::selection,
+        ::selection {
+            background-color: fg-d-1 !important;
+            color: bg-d-3 !important; }
+
+        /* White Line (Spacer/padding) */
+        hr,
+        .pure-form legend,
+        .pure-form-aligned legend,
+        .underlined {
+            border-color: bg-d-4-space; }
+
+        /* Settings: Volume Text */
+        span#volume-value {
+            color: fg-d-1; }
+            
+        /* Placeholder */
+        ::placeholder {
+            color: fg-d-1; } }
+
+    /* Light Theme */
+    @media (prefers-color-scheme: light) {
+
+        body,
+        .pure-g,
+        .pure-form legend {
+            background: bg-l-3;
+            color: fg-l-3; }
+
+        /* Clickable Links */
+        a:not(.pure-u-md-4-24 .pure-menu-heading),
+        a:active:not(.pure-u-md-4-24 .pure-menu-heading),
+        a:visited:not(.pure-u-md-4-24 .pure-menu-heading),
+        footer a,
+        summary,
+        a:not([data-id]) > .icon,
+        a:link:not(.pure-button):not(.channel-owner) {
+            color: link-l !important; }
+
+        a:hover,
+        footer a:hover,
+        summary:hover,
+        a:not([data-id]) > .icon:hover,
+        a:link:not(.pure-button):not(.channel-owner):hover {
+            color: link-l-h !important; }
+
+        /* Multiple option Select Box */
+        .pure-form {
+            input[type="color"],
+            input[type="date"],
+            input[type="datetime-local"],
+            input[type="datetime"],
+            input[type="email"],
+            input[type="month"],
+            input[type="number"],
+            input[type="password"],
+            input[type="tel"],
+            input[type="text"],
+            input[type="time"],
+            input[type="url"],
+            input[type="week"],
+            select,
+            textarea {
+                box-shadow: transparent 0px 1px 3px inset;
+                border: transparent;
+                border-radius: range-corners;
+                background-color: bg-l-1;
+                color: fg-l-3; } }
+
+        /* General Button */
+        button.pure-button.pure-button-primary {
+            background-color: bg-l-1;
+            color: fg-l-3; }
+
+        /* Checkbox & Radio: Background color */
+        input[type="checkbox"],
+        input[type="checkbox"]:before,
+        input[type="checkbox"]:checked:before,
+        input[type='radio'],
+        input[type='radio']:before,
+        input[type='radio']:checked:before {
+            color: fg-l-3; }
+
+        /* Range slider: Background */
+        input[type='range'] {
+            background-color: bg-l-1; }
+
+        /* Home Screen: Clickable links colors */
+        p,
+        p.video-data:hover {
+            color: fg-l-4; }
+
+        /* Home Screen: Donate/Popular/Trending */
+        a.feed-menu-item.pure-menu-heading {
+            color: link-l; }
+
+        /* Home Screen: Only Highlights YouTube Video's */
+        a[href^="/watch?v="] p:not(.length):hover {
+            color: fg-l-4-h; }
+
+        /* Home Screen: Watched */
+        .watched {
+            background-color: bg-l-3;
+            color: fg-l-3; }
+
+        /* Home Screen: Length Time*/
+        .length,
+        p.length {
+            color: fg-l-3;
+            background-color: bg-l-3; }
+
+        p.channel-name {
+            color: link-l; }
+
+        p.channel-name:hover {
+            color: link-l-h; }
+
+        /* Search: Filter box */
+        #filters-box {
+            background-color: bg-l-3 !important; }
+
+        /* Searchbox: Background color */
+        .pure-form input[type="search"] {
+            border: fg-l-2;
+            background-color: bg-l-1;
+            color: fg-l-3; }
+
+        /* Video Player */
+        .video-js {
+            /* Video player: play button: color */
+            .vjs-big-play-button .vjs-icon-placeholder {
+                color: l-1; }
+
+            /* Video player: Controls: Color */
+            .vjs-control-bar,
+            .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+                background-color: bg-l-3;
+                color: fg-l-3; }
+                
+            /* Button Hover */
+            button:hover {
+                color: fg-l-3; }
+
+            /* Video player: Controls: Hovering Over Selected Option colors */
+            .vjs-menu li.vjs-menu-item:focus,
+            .vjs-menu li.vjs-menu-item:hover {
+                background-color: var(--Color1Hover);
+                color: l-1; }
+
+            /* Video player: Controls: The Selected option colors */
+            .vjs-menu li.vjs-selected,
+            .vjs-menu li.vjs-selected:focus,
+            .vjs-menu li.vjs-selected:hover {
+                background-color: var(--Color1);
+                color: fg-l-3; }
+
+            /* Video player: Share Links */
+            .vjs-share__short-link,
+            .vjs-share__btn,
+            .vjs-share__short-link-wrapper {
+                font-family: sans-serif;
+                background-color: bg-l-1;
+                color: fg-l-1; }
+
+            .vjs-videojs-share_open .vjs-modal-dialog .vjs-close-button,
+            .vjs-share__subtitle,
+            .vjs-share__title {
+                font-family: sans-serif;
+                color: fg-l-1; }
+
+            .vjs-videojs-share_open .vjs-modal-dialog .vjs-modal-dialog-content,
+            .vjs-modal-dialog, .vjs-modal-dialog-content {
+                background: bg-l-3 !important; }
+
+            .vjs-videojs-share_open .vjs-modal-dialog .vjs-modal-dialog-content,
+            .vjs-modal-dialog {
+                background: bg-l-3; }
+
+            /* Video player: Settings */
+            .vjs-text-track-settings legend {
+                color: fg-l-3; }
+
+            /* Video Player: Text */
+            .vjs-icon-placeholder,
+            .vjs-icon-share {
+                color: fg-l-4; }
+
+            /* Video Player: Sliders */
+            .vjs-play-progress,
+            .vjs-volume-level {
+                color: fg-l-4; } }
+        
+        /* Video player: Controls: Progress Bar: Color */
+        .video-js.player-style-invidious .vjs-play-progress {
+            background-color: var(--Color1); }
+                
+        /* Subscribe button */
+        #subscribe,
+        #subscribe:hover {
+            color: bg-l-1 !important; }
+
+        /* Comment Section: OC Channel: Comment */
+        body a.channel-owner,
+        body a.channel-owner:hover,
+        .channel-owner:visited,
+        .channel-owner .icon.ion.ion-md-checkmark-circle {
+            color: bg-l-1 !important; }
+
+        if select-color=="Frost" {
+            /* Subscribe button */
+            #subscribe,
+            #subscribe:hover {
+                color: fg-l-1 !important; }
+
+            /* Comment Section: OC Channel: Comment */
+            body a.channel-owner,
+            body a.channel-owner:hover,
+            .channel-owner:visited,
+            .channel-owner .icon.ion.ion-md-checkmark-circle {
+                color: fg-l-1 !important; } }
+
+        /* Description: Download Button */
+        input,
+        select,
+        textarea {
+            background-color: bg-l-1;
+            color: fg-l-3; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            background-color: bg-l-1; }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: bg-l-2; }
+
+        /* Selection of text color */
+        ::selection {
+            background-color: fg-l-1 !important;
+            color: bg-l-1 !important; }
+
+        /* White Line (Spacer/padding) */
+        hr,
+        .pure-form legend,
+        .underlined {
+            border-color: bg-l-1-space; }
+            
+        .pure-form-aligned legend {
+            border-color: bg-l-1; }
+
+        /* Settings: Volume Text */
+        span#volume-value {
+            color: fg-l-1; }
+        
+        /* Placeholder */
+        ::placeholder {
+            color: fg-l-1; } }
+
+    .light-theme {
+
+        body,
+        .pure-g,
+        .pure-form legend {
+            background: bg-l-3;
+            color: fg-l-3; }
+
+        /* Clickable Links */
+        a:not(.pure-menu-heading),
+        a:active:not(.pure-menu-heading),
+        a:visited:not(.pure-menu-heading),
+        footer a,
+        summary,
+        a:not([data-id]) > .icon,
+        a:link:not(.pure-button):not(.channel-owner) {
+            color: link-l !important; }
+
+        a:hover,
+        footer a:hover,
+        summary:hover,
+        a:not([data-id]) > .icon:hover,
+        a:link:not(.pure-button):not(.channel-owner):hover {
+            color: link-l-h !important; }
+
+        /* Multiple option Select Box */
+        .pure-form {
+            input[type="color"],
+            input[type="date"],
+            input[type="datetime-local"],
+            input[type="datetime"],
+            input[type="email"],
+            input[type="month"],
+            input[type="number"],
+            input[type="password"],
+            input[type="tel"],
+            input[type="text"],
+            input[type="time"],
+            input[type="url"],
+            input[type="week"],
+            select,
+            textarea {
+                box-shadow: transparent 0px 1px 3px inset;
+                border: transparent;
+                border-radius: range-corners;
+                background-color: bg-l-1;
+                color: fg-l-3; } }
+
+        /* General Button */
+        button.pure-button.pure-button-primary {
+            background-color: bg-l-1;
+            color: fg-l-3; }
+
+        /* Checkbox & Radio: Background color */
+        input[type="checkbox"],
+        input[type="checkbox"]:before,
+        input[type="checkbox"]:checked:before,
+        input[type='radio'],
+        input[type='radio']:before,
+        input[type='radio']:checked:before {
+            color: fg-l-3; }
+
+        /* Range slider: Background */
+        input[type='range'] {
+            background-color: bg-l-1; }
+
+        /* Home Screen: Clickable links colors */
+        p,
+        p.video-data:hover {
+            color: fg-l-4; }
+
+        /* Home Screen: Donate/Popular/Trending */
+        a.feed-menu-item.pure-menu-heading {
+            color: link-l; }
+
+        /* Home Screen: Only Highlights YouTube Video's */
+        a[href^="/watch?v="] p:not(.length):hover {
+            color: fg-l-4-h; }
+
+        /* Home Screen: Watched */
+        .watched {
+            background-color: bg-l-3;
+            color: fg-l-3; }
+
+        /* Home Screen: Length Time*/
+        .length,
+        p.length {
+            color: fg-l-3;
+            background-color: bg-l-3; }
+
+        p.channel-name {
+            color: link-l; }
+
+        p.channel-name:hover {
+            color: link-l-h; }
+
+        /* Search: Filter box */
+        #filters-box {
+            background-color: bg-l-3 !important; }
+
+        /* Searchbox: Background color */
+        .pure-form input[type="search"] {
+            border: fg-l-2;
+            background-color: bg-l-1;
+            color: fg-l-3; }
+
+        /* Video Player */
+        .video-js {
+            /* Video player: play button: color */
+            .vjs-big-play-button .vjs-icon-placeholder {
+                color: l-1; }
+
+            /* Video player: Controls: Color */
+            .vjs-control-bar,
+            .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+                background-color: bg-l-3;
+                color: fg-l-3; }
+                
+            /* Button Hover */
+            button:hover {
+                color: fg-l-3; }
+
+            /* Video player: Controls: Hovering Over Selected Option colors */
+            .vjs-menu li.vjs-menu-item:focus,
+            .vjs-menu li.vjs-menu-item:hover {
+                background-color: var(--Color1Hover);
+                color: l-1; }
+
+            /* Video player: Controls: The Selected option colors */
+            .vjs-menu li.vjs-selected,
+            .vjs-menu li.vjs-selected:focus,
+            .vjs-menu li.vjs-selected:hover {
+                background-color: var(--Color1);
+                color: fg-l-3; }
+
+            /* Video player: Share Links */
+            .vjs-share__short-link,
+            .vjs-share__btn,
+            .vjs-share__short-link-wrapper {
+                font-family: sans-serif;
+                background-color: bg-l-1;
+                color: fg-l-1; }
+
+            .vjs-videojs-share_open .vjs-modal-dialog .vjs-close-button,
+            .vjs-share__subtitle,
+            .vjs-share__title {
+                font-family: sans-serif;
+                color: fg-l-1; }
+
+            .vjs-videojs-share_open .vjs-modal-dialog .vjs-modal-dialog-content,
+            .vjs-modal-dialog, .vjs-modal-dialog-content {
+                background: bg-l-3 !important; }
+
+            .vjs-videojs-share_open .vjs-modal-dialog .vjs-modal-dialog-content,
+            .vjs-modal-dialog {
+                background: bg-l-3; }
+
+            /* Video player: Settings */
+            .vjs-text-track-settings legend {
+                color: fg-l-3; }
+
+            /* Video Player: Text */
+            .vjs-icon-placeholder,
+            .vjs-icon-share {
+                color: fg-l-4; }
+
+            /* Video Player: Sliders */
+            .vjs-play-progress,
+            .vjs-volume-level {
+                color: fg-l-4; } }
+        
+        /* Video player: Controls: Progress Bar: Color */
+        .video-js.player-style-invidious .vjs-play-progress {
+            background-color: var(--Color1); }
+                
+        /* Subscribe button */
+        #subscribe,
+        #subscribe:hover {
+            color: bg-l-1 !important; }
+
+        /* Comment Section: OC Channel: Comment */
+        body a.channel-owner,
+        body a.channel-owner:hover,
+        .channel-owner:visited,
+        .channel-owner .icon.ion.ion-md-checkmark-circle {
+            color: bg-l-1 !important; }
+
+        if select-color=="Frost" {
+            /* Subscribe button */
+            #subscribe,
+            #subscribe:hover {
+                color: fg-l-1 !important; }
+
+            /* Comment Section: OC Channel: Comment */
+            body a.channel-owner,
+            body a.channel-owner:hover,
+            .channel-owner:visited,
+            .channel-owner .icon.ion.ion-md-checkmark-circle {
+                color: fg-l-1 !important; } }
+
+        /* Description: Download Button */
+        input,
+        select,
+        textarea {
+            background-color: bg-l-1;
+            color: fg-l-3; }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            background-color: bg-l-1; }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: bg-l-2; }
+
+        /* Selection of text color */
+        ::selection {
+            background-color: fg-l-1 !important;
+            color: bg-l-1 !important; }
+
+        /* White Line (Spacer/padding) */
+        hr,
+        .pure-form legend,
+        .underlined {
+            border-color: bg-l-1-space; }
+            
+        .pure-form-aligned legend {
+            border-color: bg-l-1; }
+
+        /* Settings: Volume Text */
+        span#volume-value {
+            color: fg-l-1; }
+        
+        /* Placeholder */
+        ::placeholder {
+            color: fg-l-1; } }
 
     /* General Button */
-    .dark-theme button.pure-button.pure-button-primary,
-    .no-theme button.pure-button.pure-button-primary {
-        background-color: var(--nNight2);
-        color: var(--nLight1);
-        border-radius: var(--nCorners);
-        margin: 1px;
-        margin-bottom: 10px; }
+    button.pure-button.pure-button-primary {
+        border-radius: range-corners !important;
+        height: 36px; }
 
     /* Checkbox & Radio */
     input[type="checkbox"],
-    [type='radio'] {
-        -webkit-appearance: none;
+    input[type='radio'] {
+        border-radius: 6px;
         height: 1.3em;
         width: 1.3em;
         cursor: pointer;
         position: relative;
-        -webkit-transition: .10s;
-        border-radius: var(--nCorners);
         vertical-align: middle;
-        margin: 1px; }
-
-    /* Checkbox & Radio: Background color */
-    .dark-theme input[type="checkbox"],
-    .no-theme input[type="checkbox"],
-    .dark-theme input[type='radio'],
-    .no-theme input[type='radio'] {
-        background-color: var(--nNight3); }
-
-    /* Checkbox & Radio: Color check */
-    .dark-theme input[type="checkbox"]:checked,
-    .no-theme input[type="checkbox"]:checked,
-    .dark-theme input[type='radio']:checked,
-    .no-theme input[type='radio']:checked {
-        background-color: var(--nColor3); }
-
-    /* Color checkbox and radio button */
-    .dark-theme input[type="checkbox"]:before,
-    .dark-theme input[type="checkbox"]:checked:before,
-    .dark-theme input[type='radio']:before,
-    .dark-theme input[type='radio']:checked:before,
-    .no-theme input[type="checkbox"]:before,
-    .no-theme input[type="checkbox"]:checked:before,
-    .no-theme input[type='radio']:before,
-    .no-theme input[type='radio']:checked:before,
-    {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        line-height: 1.5em;
-        text-align: center;
-        color: var(--nNight3); }
+        -webkit-appearance: none;
+        -webkit-transition: .10s; }
 
     /* Checkbox & Radio: Icons */
     input[type='radio'] {
@@ -165,23 +1131,42 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     input[type="checkbox"]:checked:before {
         content: '✔'; }
 
-    /* Range slider: Background */
-    .dark-theme input[type='range'],
-    .no-theme input[type='range'] {
-        background-color: var(--nNight3); }
+    /* Color checkbox and radio button */
+    input[type="checkbox"]:before,
+    input[type="checkbox"]:checked:before,
+    input[type='radio']:before,
+    input[type='radio']:checked:before {
+        background-color: var(--Color5);
+        border-radius: 6px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 1.5em;
+        text-align: center; }
+
+    /* Checkbox: Autoplay */
+    .pure-u-lg-1-5 #continue {
+        margin-left: 3px; }
+        
+    /* Checkbox & Radio: Color check */
+    input[type="checkbox"]:checked,
+    input[type='radio']:checked {
+        background-color: var(--Color5); }
 
     /* Range slider: Slider and Round */
-    .dark-theme input[type='range']::-webkit-slider-thumb,
-    .no-theme input[type='range']::-webkit-slider-thumb {
+    input[type='range']::-webkit-slider-thumb {
         width: 15px;
         border-radius: 15px;
         -webkit-appearance: none;
         height: 15px;
-        background: var(--nColor3);
-        box-shadow: -80px 0 0 75px var(--nColor3Hover); }
+        background: var(--Color5);
+        box-shadow: -80px 0 0 75px var(--Color5Hover); }
 
     /* Range slider: Padding */
     input[type='range'] {
+        cursor: pointer;
         overflow: hidden;
         -webkit-appearance: none;
         border-radius: 1em; }
@@ -189,194 +1174,183 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
     input[type='range']::-webkit-slider-runnable-track {
         height: 15px;
         -webkit-appearance: none; }
+        
+    /* Screen Width */
+    @media screen and (min-width: 48em) {
+        .pure-u-md-1-6,
+        .pure-u-md-1-12,
+        .pure-u-md-4-24,
+        .pure-u-md-20-24,
+        .pure-u-md-12-24 {
+            width: 0% !important; } }
+            
+    .pure-u-1.pure-u-md-2-24 {
+            width: 0%; }
+            
+    #comments {
+        max-width: 100%; }
+        
+    /* Font */
+    html, body, .pure-g [class*="pure-u"] {
+        font-family: var(--Font);
+        font-size: range-font; }
 
     /* Home Screen: Thumbnail */
-    img {
-        filter: opacity(15%) brightness(0%);
-        background: var(--nNight3);
-        border-radius: var(--nCorners); }
+    img,
+    div.watched-overlay {
+        border-radius: range-corners; }
 
-    /* Home Screen: Donate/Popular/Trending */
-    .dark-theme a.feed-menu-item.pure-menu-heading,
-    /* Channel color */
-    .dark-theme b,
-    /* Volume Text Color (Settings) */
-    .dark-theme span#volume-value,
-    .no-theme a.feed-menu-item.pure-menu-heading,
-    .no-theme b,
-    .no-theme span#volume-value {
-        color: var(--nLight1); }
+    div.watched-indicator {
+        border-radius: 0 0 range-corners range-corners; }
 
-    /* Home Screen: Clickable links colors */
-    .dark-theme p,
-    /* Date, Views removing hover */
-    .dark-theme p.video-data:hover,
-    .no-theme p,
-    .no-theme p.video-data:hover {
-        background-color: var(--nNight3);
-        border-radius: var(--nCorners);
-        color: var(--nNight3); }
+    div.watched-overlay {
+        background-color: var(--Color1Watched); }
 
-    /* Home Screen: Only Highlights YouTube Video's */
-    .dark-theme a[href^="/watch?v="] p:not(.length):hover {
-        color: var(--nLight1Hover); }
+    div.watched-indicator {
+        background-color: var(--Color1); }
 
-    .no-theme a[href^="/watch?v="] p:not(.length):hover {
-        color: var(--nLight1Hover); }
+    /* Home Screen: Searchbox */
+    #searchbox {
+        border: transparent; }
+
+    /* Home Screen: Watched */
+    .watched {
+        border-radius: range-corners; }
 
     /* Home Screen: Length Time*/
-    .dark-theme .length,
-    .dark-theme p.length,
-    .no-theme .length,
-    .no-theme p.length {
-        color: var(--nNight3);
-        background-color: var(--nNight3);
-    }
-
-    .dark-theme .length,
-    .dark-theme p.length,
-    .no-theme .length,
-    .no-theme p.length {
-        padding: 5px;
-        margin-top: 2px;
-        right: 0.4em;
+    .length,
+    p.length {
+        padding: 5px 8px 5px 8px;
+        right: 0.40em;
         bottom: -0.60em;
-        border-radius: var(--nCorners); }
+        font-size: range-font;
+        border-radius: range-corners; }
 
-    .dark-theme p.channel-name,
-    .no-theme p.channel-name {
-        color: var(--nNight3); }
+    .dark-theme,
+    .no-theme,
+    .light-theme {
+        /* Home Screen: Invidious icon / Log in */
+        .navbar .index-link,
+        .pure-menu-heading {
+            color: var(--Color1); }
 
-    .dark-theme p.channel-name:hover,
-    .no-theme p.channel-name:hover {
-        color: var(--nColor3Hover); }
+        .navbar .index-link:hover {
+            color: var(--Color1Hover) !important; }
 
-    /* Home Screen: Invidious icon / Log in */
-    .dark-theme .navbar .index-link,
-    .no-theme .navbar .index-link {
-        color: var(--nColor1); }
+        /* Home Screen: Little icons beside video */
+        i.icon.ion-md-headset {
+            color: var(--Color4) !important; }
 
-    .dark-theme .pure-menu-heading,
-    .no-theme .pure-menu-heading {
-        color: var(--nColor3); }
+        i.icon.ion-md-headset:hover {
+            color: var(--Color4Hover) !important; }
 
-    /* Home Screen: Little icons beside video */
-    .dark-theme i.icon.ion-md-headset,
-    .no-theme i.icon.ion-md-headset {
-        color: var(--nColor2) !important; }
+        i.icon.ion-logo-youtube {
+            color: var(--Color1) !important; }
 
-    .dark-theme i.icon.ion-md-headset:hover,
-    .no-theme i.icon.ion-md-headset:hover {
-        color: var(--nColor2Hover) !important; }
+        i.icon.ion-logo-youtube:hover {
+            color: var(--Color1Hover) !important; }
 
-    .dark-theme i.icon.ion-logo-youtube,
-    .no-theme i.icon.ion-logo-youtube {
-        color: var(--nColor1) !important; }
+        i.icon.ion-md-jet {
+            color: var(--Color3) !important; }
 
-    .dark-theme i.icon.ion-logo-youtube:hover,
-    .no-theme i.icon.ion-logo-youtube:hover {
-        color: var(--nColor1Hover) !important; }
+        i.icon.ion-md-jet:hover {
+            color: var(--Color3Hover) !important; } }
 
-    .dark-theme i.icon.ion-md-jet,
-    .no-theme i.icon.ion-md-jet {
-        color: var(--nColor4) !important; }
+    /* Searchbox */
+    .pure-form input[type="search"] {
+        box-shadow: transparent;
+        border-radius: range-searchbox;
+        margin: 0px; }
 
-    .dark-theme i.icon.ion-md-jet:hover,
-    .no-theme i.icon.ion-md-jet:hover {
-        color: var(--nColor4Hover) !important; }
-
-    /* Searchbar: Zooming Padding */
+    /* Zooming */
     .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box,
     .pure-g:not(.searchbar) > .searchbar,
     .pure-form-aligned {
-        border-radius: var(--nCorners);
-        padding: 8px;
+        border-radius: range-corners;
+        padding: 12px;
         transition: all 0.2s; }
 
     .h-box {
         padding-left: 1.1em;
         padding-right: 1.1em; }
 
-    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box:hover,
-    .pure-g:not(.searchbar) > .searchbar:hover {
+    .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box:hover {
         transform: scale(1.025);
         transition: all 0.2s;
         opacity: 1;
-        box-shadow: 0px 1px 20px rgba(0, 0, 0, 0.3);
         z-index: 99999; }
 
-    /* Search: Filter box */
-    .dark-theme #filters-box,
-    .no-theme #filters-box {
-        background-color: var(--nNight1); }
+    .video-js {
+        /* Video player: play button: Border */
+        .vjs-big-play-button {
+            border-radius: range-corners;
+            background-color: var(--Color1) !important;
+            border: 0em solid transparent;
+            font-size: 4.5em;
+            top: 50%;
+            left: 50%;
+            margin-top: -0.81666em;
+            margin-left: -1.5em; }
 
-    .dark-theme .underlined,
-    .no-theme .underlined {
-        border-bottom-color: var(--nColor2); }
+        /* Volume Slider */
+        .vjs-volume-level {
+            border-radius: range-corners;
+            background-color: var(--Color1) !important; }
 
-    /* Video player: play button: color */
-    .dark-theme .video-js .vjs-slider:hover,
-    .dark-theme .video-js button:hover,
-    .no-theme .video-js .vjs-slider:hover,
-    .no-theme .video-js button:hover {
-        color: var(--nLight1); }
+        /* Video player: Controls: Floating */
+        .vjs-control-bar,
+        .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
+            font-family: sans-serif;
+            opacity: 1;
+            border-radius: range-corners range-corners 0 0;
+            left: 0.5%;
+            right: 0.5%;
+            width: 99%;
+            margin-bottom: 0.5%; }
+            
+        .vjs-control-bar {
+            border-radius: range-corners; }
 
-    /* Video player: play button: Border */
-    .dark-theme .video-js .vjs-big-play-button,
-    .no-theme .video-js .vjs-big-play-button/* Volume Slider */
-    .dark-theme .video-js .vjs-volume-level,
-    .no-theme .video-js .vjs-volume-level {
-        border-radius: var(--nCorners);
-        background-color: var(--nColor1);
-        border: 0em solid transparent; }
+        /* Video player: Share Links */
+        .vjs-videojs-share_open .vjs-modal-dialog .vjs-modal-dialog-content,
+        .vjs-modal-dialog {
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+            border-radius: range-corners; }
 
-    /* Video player: Controls: Color */
-    .dark-theme .video-js .vjs-control-bar,
-    .dark-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
-    .no-theme .video-js .vjs-control-bar,
-    .no-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
-        background-color: var(--nNight1);
-        color: var(--nLight3); }
+        .vjs-share__social_fbFeed,
+        .vjs-share__social_tw,
+        .vjs-share__social_reddit,
+        .vjs-share__social_mail,
+        .vjs-share__social_email,
+        .vjs-share__short-link,
+        .vjs-share__btn,
+        .vjs-share__short-link-wrapper {
+            border-radius: range-corners; }
 
-    /* Video player: Controls: Floating */
-    .dark-theme .video-js .vjs-control-bar,
-    .dark-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content,
-    .no-theme .video-js .vjs-control-bar,
-    .no-theme .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
-        opacity: 0.9;
-        border-radius: var(--nCorners);
-        left: 0.5%;
-        right: 0.5%;
-        width: 99%;
-        margin-bottom: 0.5%; }
+        .vjs-share__social_fbFeed {
+            background-color: var(--Color1); }
 
-    /* Video player: Controls: Progress Bar: Color */
-    .dark-theme .video-js.player-style-invidious .vjs-play-progress,
-    .no-theme .video-js.player-style-invidious .vjs-play-progress {
-        background-color: var(--nColor1); }
+        .vjs-share__social_tw {
+            background-color: var(--Color3); }
 
-    /* Video player: Controls: Hovering Over Selected Option colors */
-    .dark-theme .vjs-menu li.vjs-menu-item:focus,
-    .dark-theme .vjs-menu li.vjs-menu-item:hover,
-    .no-theme .vjs-menu li.vjs-menu-item:focus,
-    .no-theme .vjs-menu li.vjs-menu-item:hover {
-        background-color: var(--nColor1Hover);
-        color: var(--nLight1); }
+        .vjs-share__social_reddit {
+            background-color: var(--Color2); }
 
-    /* Video player: Controls: The Selected option colors */
-    .dark-theme .vjs-menu li.vjs-selected,
-    .dark-theme .vjs-menu li.vjs-selected:focus,
-    .dark-theme .vjs-menu li.vjs-selected:hover,
-    .no-theme .vjs-menu li.vjs-selected,
-    .no-theme .vjs-menu li.vjs-selected:focus,
-    .no-theme .vjs-menu li.vjs-selected:hover {
-        background-color: var(--nColor1);
-        color: var(--nLight1); }
+        .vjs-share__social_mail,
+        .vjs-share__social_email {
+            background-color: var(--Color4); }
+
+        /* Video player: Settings */
+        .vjs-videojs-share_open .vjs-modal-dialog .vjs-close-button::before {
+            display: none; } }
 
     /* Video player: Size */
     .pure-u-md-20-24 {
-        width: 97% !important;
-        max-width: 80em !important;
+        width: 94% !important;
+        max-width: range-screen-width !important;
         margin: auto; }
 
     /* Video player: Remove black borders */
@@ -384,118 +1358,194 @@ domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion") {
         padding-top: 56.25% !important; }
 
     #player-container {
-        box-shadow: 0px 10px 17px rgba(0, 0, 0, 0.3);
         transition: all 0.2s;
-        padding-bottom: 54.25% !important; }
+        padding-bottom: 54.7% !important; }
+       
+    @media screen and (max-width: 48em) {
+        #player-container {
+           padding-bottom: 47% !important;
+            margin-bottom: 8%; } }
+
+    if checkbox-theatre {
+        @media screen and (max-width: range-screen-width) {
+            #player-container {
+                margin-bottom: 6%;
+                margin-left: -3.2%;
+                margin-right: -3.2%; } } }
 
     /* Description: Padding and Form */
-    .channel-profile {
-        margin-top: 10px; }
-
     .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box {
-        margin: 5px }
-
-    .pure-form legend {
-        text-align: center;
-        border-color: var(--nColor4);
-        padding: 15px; }
-
-    .pure-control-group {
-        margin-top: 3px;
-        margin-bottom: 7px; }
+        margin: 5px; }
 
     /* Description: Subscribe button */
-    .dark-theme #subscribe,
-    .no-theme #subscribe {
-        background-color: var(--nColor1);
-        color: var(--nNight1);
-        border-radius: var(--nCorners);
+    #subscribe {
+        border-radius: range-corners;
+        background-color: var(--Color1);
         float: right;
         padding: 7.5px;
         margin-top: -55px; }
+        
+    #subscribe:hover {
+        background-color: var(--Color1Hover); }
 
     /* Description: Download Multiple Section Bold */
     select#download_widget {
         font-weight: bold;
-        margin-top: 15px; }
+        margin-top: 10px; }
+        
+    .pure-form-stacked .pure-button-primary {
+        margin-top: 5px; }
 
     /* Description: Download Button */
-    .dark-theme input,
-    .dark-theme select,
-    .dark-theme textarea,
-    .no-theme input,
-    .no-theme select,
-    .no-theme textarea {
-        color: var(--nLight1); }
+    input,
+    select,
+    textarea {
+        font-family: sans-serif;
+        border: 0px;
+        border-radius: range-corners; }
+        
+    /* Description: Channel Image */
+    .channel-profile > img {
+        width: 36px !important;
+        margin-right: 6px;
+        height: auto; }
+        
+    .pure-u-md-2-24 > img {
+        width: 36px !important;
+        height: auto; }
+
+    .pure-u-md-2-24 {
+        max-width: 46px; }
 
     /* Scrollbar */
-    .dark-theme::-webkit-scrollbar,
-    .no-theme::-webkit-scrollbar {
-        background-color: var(--nNight2);
+    ::-webkit-scrollbar {
         width: 15px; }
-
-    .dark-theme::-webkit-scrollbar-thumb,
-    .no-theme::-webkit-scrollbar-thumb {
-        background-color: var(--nNight3); }
 
     /* Comment Section: Heart icon */
     .icon.ion-ios-heart.creator-heart-small-container {
-        color: var(--nColor1); }
+        color: var(--Color1); }
 
     /* Comment Section: OC Channel: Comment */
     body a.channel-owner {
-        background-color: var(--nColor1);
-        padding: 6px 8px;
-        border-radius: var(--nCorners);
-        color: var(--nLight3) !important; }
+        background-color: var(--Color1);
+        padding: 4px 8px;
+        border-radius: range-corners; }
 
     body a.channel-owner:hover {
-        background-color: var(--nColor1Hover);
-        color: var(--nLight1Hover) !important; }
+        background-color: var(--Color1Hover); }
 
     /* Banner on Channel */
     .pure-u-md-20-24 > .h-box > img {
-        border-radius: var(--nCorners);
+        border-radius: range-corners;
         margin: 5px;
-        opacity: 0.8;
-        box-shadow: 0px 1px 13px rgba(0, 0, 0, 0.3);
-        transition: all 0.2s }
+        opacity: 1;
+        transition: all 0.2s; }
 
     /* White Line (Spacer/padding) */
-    .dark-theme hr,
-    .no-theme hr {
-        margin: 15px 0;
-        border-color: var(--nColor2); }
+    hr {
+        margin: 1.3em 0; }
+        
+    .pure-form legend {
+        text-align: center;
+        margin-bottom: 1.3em;
+        padding: 1.3em; }
 
-    /* Selection of text color */
-    ::selection,
-    {
-        background-color: var(--nColor3);
-        color: var(--nNight1); }
+    /* Shadow */
+    if checkbox-shadow {
+        .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box:hover {
+            box-shadow: 0px 1px 20px shadow; }
 
-    /* Hidden items */
-    #comments > div > b {
-        display: none; } }
+        #player-container {
+            box-shadow: 0px 10px 17px shadow; }
+
+        .pure-u-md-20-24 > .h-box > img {
+            box-shadow: 0px 1px 13px shadow; } }
+        
+        /* THUMBNAIL */
+    img {
+        filter: opacity(15%) brightness(0%) !important; }
+    
+    p,
+    p.video-data:hover {
+        border-radius: 12px !important;
+        background-color: bg-d-2 !important;
+        color: transparent !important; }
+    
+    ::placeholder {
+        color: transparent !important; }
+    
+    .feed-menu .pure-menu-heading,
+    .pure-u-1-4 .pure-menu-heading[href="#"] {
+        border-radius: 12px !important;
+        color: transparent !important;
+        background-color: bg-d-2; }
+        
+    .feed-menu {
+        color: transparent !important; }
+    
+    .feed-menu .pure-menu-heading {
+        margin-left: 10px; }
+    
+    .pure-u-1-4 #user_name {
+        border-radius: 12px !important;
+        background-color: bg-d-3;
+        color: transparent !important; }
+        
+    a:link:not(.navbar .index-link) {
+            color: transparent !important; }
+        
+        }
 
 @-moz-document domain("redirect.invidious.io") {
-    :root {
-        --edge-table: #0000;
-        --bg-primary: #2E3440;
-        --bg-secondary: #3B4252;
-        --bg-tertiary: #434C5E;
-        --fg-primary: #D8DEE9;
-        if select-theme=="Frost" {
-            --fg-header: #88C0D0;
-            --fg-dim: #5E81AC;
-            --fg-link: #81A1C1;
-            --fg-linkHover: #7490AD; }
 
-        if select-theme=="Colorful" {
-            --fg-header: #BF616A;
-            --fg-dim: #EBCB8B;
-            --fg-link: #A3BE8C;
-            --fg-linkHover: #8AA177; } }
+    @media (prefers-color-scheme: light) {
+        :root {
+            --bg-primary: bg-l-3;
+            --bg-secondary: bg-l-1;
+            --bg-tertiary: bg-l-3;
+            --fg-primary: fg-l-1;
+            --fg-link: link-l;
+            --fg-linkHover: link-l-h;
+            --edge-table: tansparent; }
+        
+        ::selection,
+        ::selection {
+            background-color: fg-l-3;
+            color: bg-l-1; } }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --bg-primary: bg-d-1;
+            --bg-secondary: bg-d-2;
+            --bg-tertiary: bg-d-3;
+            --fg-primary: fg-d-1;
+            --fg-link: link-d;
+            --fg-linkHover: link-d-h;
+            --edge-table: tansparent; }
+        
+        ::selection,
+        ::selection {
+            background-color: fg-d-1;
+            color: bg-d-3; } }
+
+    :root {
+        if select-color=="Frost" {
+            --fg-header: nord-1;
+            --fg-dim: nord-2; }
+
+        if select-color=="Colourful" {
+            --fg-header: red-n;
+            --fg-dim: red-n; } }
 
     /* Hovering over links */
     a:hover {
-        color: var(--fg-linkHover); } }
+        color: var(--fg-linkHover); }
+
+    .script-warning {
+        border: transparent;
+        background: var(--fg-dim);
+        color: var(--fg-primary); }
+    
+    /* Font */
+    html, body, .pure-g [class*="pure-u"] {
+        font-family: Roboto, Arial, sans-serif !important; } }
