@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious - Black Theme
 @namespace      https://github.com/Tsyron/Invidious-Theme
-@version        1.1.0
+@version        1.1.1
 @license        GPLv3
 @description    Invidious Website In Black Theme/Style
 @author         Tsyron
@@ -34,28 +34,31 @@ url-prefix("https://y.com."),
 url-prefix("https://yt"),
 url-prefix("tube."),
 domain("watch.thekitty.zone"),
+domain("onion.tube"),
+domain("not-ytb.blocus.ch"),
 domain("yewtu.be"),
 domain("youtube.076.ne.jp"),
 domain("youtube.owacon.moe"),
+domain("sea1.iv.ggtyler.dev"),
 domain("am74vkcrjp2d5v36lcdqgsj2m6x36tbrkhsruoegwfcizzabnfgf5zyd.onion"),
 domain("c7hqkpkpemu6e7emz5b4vyz7idjgdvgaaa3dyimmeojqbgpea3xqjoid.onion"),
 domain("euxxcnhsynwmfidvhjf6uzptsmh4dipkmgdmcmxxuo7tunp3ad2jrwyd.onion"),
 domain("grwp24hodrefzvjjuccrkw3mjq4tzhaaq32amf33dzpmuxe7ilepcmad.onion"),
-domain("inv.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion"),
-domain("invidious.esmail5pdn24shtvieloeedh7ehz3nrwcdivnfhfcedl7gf4kwddhkqd.onion"),
-domain("iv.odysfvr23q5wgt7i456o5t3trw2cw5dgn56vbjfbq2m7xsc5vqbqpcyd.onion"),
 domain("kbjggqkzv65ivcqj6bumvp337z6264huv5kpkwuv6gu5yjiskvan7fad.onion"),
 domain("ng27owmagn5amdm7l5s3rsqxwscl5ynppnis5dqcasogkyxcfqn7psid.onion"),
 domain("osbivz6guyeahrwp2lnwyjk2xos342h4ocsxyqrlaopqjuhwn2djiiyd.onion"),
 domain("u2cvlit75owumwpy4dj2hsmvkq7nvrclkpht7xgyye2pyoxhpmclkrad.onion"),
 domain("w6ijuptxiku4xpnnaetxvnkc5vqcdu7mgns2u77qefoixi63vbvnpnqd.onion"),
+domain("invbp.pjsfkvpxlinjamtawaksbnnaqs2fc2mtvmozrzckxh7f3kis6yea25ad.onion"),
+domain("invidiousge2cq2qegp4vdzsfu6mvpqdf6dtcyzmqbv7yx2spvkkajad.onion"),
 domain("inv.vern.i2p"),
 domain("pjsfhqamc7k6htnumrvn4cwqqdoggeepj7u5viyimgnxg3gar72q.b32.i2p"),
 domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
-    
+
     /* Darker Tints */
     bg-1=#000
     bg-2=lighten(bg-1, 10%)
+    bg-2-disabled=rgba(bg-2, 0.5)
     bg-3=lighten(bg-1, 25%)
     bg-4=lighten(bg-1, 40%)
     
@@ -97,19 +100,19 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
 
         if select-color=="Light" {
             --Color1: light-1;
-            --Color1Hover: fg-4;
+            --Color1Hover: light-1-h;
             --Color1Watched: light-1-watched;
             --Color2: light-2;
-            --Color2Hover: fg-4;
-            --Color3: fg-3;
-            --Color3Hover: fg-4; }
-        
+            --Color2Hover: light-2-h;
+            --Color3: light-3;
+            --Color3Hover: light-3-h; }
+
         if select-font=="YouTube" {
             --Font: Roboto, Arial, sans-serif !important; }
-            
+
         if select-font=="Default" {
             --Font: inherit; }
-        
+
         if select-font=="Monospace" {
             --Font: monospace; } }
 
@@ -130,8 +133,8 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         summary,
         a:not([data-id]) > .icon,
         a:link:not(.pure-button):not(.channel-owner) {
-        color: link; }
-        
+            color: link; }
+
         footer a {
             color: link !important; }
 
@@ -158,11 +161,11 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
             input[type="week"],
             select,
             textarea {
-            box-shadow: transparent 0px 1px 3px inset;
-            border: transparent;
-            border-radius: range-corners;
-            background-color: bg-2;
-            color: fg-1; } }
+                box-shadow: transparent 0px 1px 3px inset;
+                border: transparent;
+                border-radius: range-corners;
+                background-color: bg-2;
+                color: fg-1; } }
 
         /* General Button */
         button.pure-button.pure-button-primary {
@@ -176,8 +179,11 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         input[type='radio'],
         input[type='radio']:before,
         input[type='radio']:checked:before {
-            color: fg-1;}
-            
+            color: fg-1; }
+
+        input[disabled] {
+            background-color: bg-2-disabled; }
+
         /* Checkbox & Radio: Color check */
         input[type="checkbox"]:checked,
         input[type='radio']:checked {
@@ -210,10 +216,10 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         p.length {
             color: fg-1;
             background-color: bg-2; }
-            
+
         p.channel-name {
             color: link; }
-            
+
         p.channel-name:hover {
             color: link-h; }
 
@@ -223,13 +229,13 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
 
         /* Searchbox: background color */
         .pure-form input[type="search"] {
-            border: fg-1; 
+            border: fg-1;
             background-color: bg-2;
             color: fg-1; }
 
         /* Video Player */
         .video-js {
-        /* Video player: play button: color */
+            /* Video player: play button: color */
             .vjs-big-play-button .vjs-icon-placeholder {
                 color: fg-1; }
 
@@ -238,7 +244,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
             .vjs-menu-button-popup .vjs-menu .vjs-menu-content {
                 background-color: bg-1;
                 color: fg-1; }
-            
+
             /* Button Hover */
             button:hover {
                 color: fg-1; }
@@ -255,7 +261,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
             .vjs-menu li.vjs-selected:hover {
                 background-color: var(--Color1);
                 color: fg-1; }
-        
+
             /* Video player: Share Links */
             .vjs-share__short-link,
             .vjs-share__btn,
@@ -273,11 +279,12 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
             .vjs-videojs-share_open .vjs-modal-dialog .vjs-modal-dialog-content,
             .vjs-modal-dialog {
                 background: bg-1; }
-        
+
             .vjs-modal-dialog .vjs-modal-dialog-content,
-            .vjs-modal-dialog, .vjs-modal-dialog-content {
+            .vjs-modal-dialog,
+            .vjs-modal-dialog-content {
                 background: bg-1 !important; }
-            
+
             /* Video player: Settings */
             .vjs-text-track-settings legend {
                 color: fg-1; }
@@ -307,12 +314,12 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         .channel-owner:visited,
         .channel-owner .icon.ion.ion-md-checkmark-circle {
             color: bg-1 !important; }
-            
+
         if select-color=="Colourful" {
             #subscribe,
             #subscribe:hover {
                 color: fg-1 !important; }
-            
+
             body a.channel-owner,
             body a.channel-owner:hover,
             .channel-owner:visited,
@@ -340,22 +347,22 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         ::selection {
             background-color: fg-1 !important;
             color: bg-3 !important; }
-        
+
         /* White Line (Spacer/padding) */
         hr,
         .pure-form legend,
         .pure-form-aligned legend,
         .underlined {
             border-color: bg-2; }
-        
+
         /* Settings: Volume Text */
         span#volume-value {
             color: fg-1; }
-        
+
         /* Placeholder */
         ::placeholder {
             color: fg-1; } }
-        
+
     /* General Button */
     button.pure-button.pure-button-primary {
         border-radius: range-corners !important;
@@ -393,7 +400,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         height: 100%;
         line-height: 1.5em;
         text-align: center; }
-        
+
     /* Checkbox: Autoplay */
     .pure-u-lg-1-5 #continue {
         margin-left: 3px; }
@@ -417,7 +424,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
     input[type='range']::-webkit-slider-runnable-track {
         height: 15px;
         -webkit-appearance: none; }
-        
+
     /* Screen Width */
     @media screen and (min-width: 48em) {
         .pure-u-md-1-6,
@@ -426,15 +433,17 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         .pure-u-md-20-24,
         .pure-u-md-12-24 {
             width: 0% !important; } }
-            
+
     .pure-u-1.pure-u-md-2-24 {
-            width: 0%; }
-            
+        width: 0%; }
+
     #comments {
         max-width: 100%; }
-        
+
     /* Font */
-    html, body, .pure-g [class*="pure-u"] {
+    html,
+    body,
+    .pure-g [class*="pure-u"] {
         font-family: var(--Font);
         font-size: range-font; }
 
@@ -550,7 +559,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
             right: 0.5%;
             width: 99%;
             margin-bottom: 0.5%; }
-            
+
         .vjs-control-bar {
             border-radius: range-corners; }
 
@@ -585,7 +594,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         .vjs-share__social_mail,
         .vjs-share__social_email {
             background-color: var(--Color4); }
-     
+
         /* Video player: Settings */
         .vjs-videojs-share_open .vjs-modal-dialog .vjs-close-button::before {
             display: none; } }
@@ -603,23 +612,27 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
     #player-container {
         transition: all 0.2s;
         padding-bottom: 54.7% !important; }
-       
+
     @media screen and (max-width: 48em) {
         #player-container {
-           padding-bottom: 47% !important;
+            padding-bottom: 47% !important;
             margin-bottom: 8%; } }
-        
+
     if checkbox-theatre {
         @media screen and (max-width: range-screen-width) {
             #player-container {
                 margin-bottom: 6%;
                 margin-left: -3.2%;
-                margin-right: -3.2%; } } }
+                margin-right: -3.2%; } }
+
+        @media screen and (max-width: 767px) {
+            #player-container {
+                margin-bottom: 15%; } } }
 
     /* Description: Padding and Form */
     .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box {
         margin: 5px; }
-    
+
     /* Description: Subscribe button */
     #subscribe {
         border-radius: range-corners;
@@ -627,15 +640,16 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         float: right;
         padding: 7.5px;
         margin-top: -55px; }
-        
+
     #subscribe:hover {
         background-color: var(--Color1Hover); }
 
     /* Description: Download Multiple Section Bold */
     select#download_widget {
         font-weight: bold;
+        max-width: 350px !important;
         margin-top: 10px; }
-        
+
     .pure-form-stacked .pure-button-primary {
         margin-top: 5px; }
 
@@ -646,13 +660,13 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         font-family: sans-serif;
         border: 0px;
         border-radius: range-corners; }
-        
+
     /* Description: Channel Image */
     .channel-profile > img {
         width: 36px !important;
         margin-right: 6px;
         height: auto; }
-        
+
     .pure-u-md-2-24 > img {
         width: 36px !important;
         height: auto; }
@@ -687,11 +701,16 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
     /* White Line (Spacer/padding) */
     hr {
         margin: 1.3em 0; }
-        
+
     .pure-form legend {
         text-align: center;
         margin-bottom: 1.3em;
         padding: 1.3em; }
+
+    /* Settings */
+    .pure-form-aligned .pure-control-group label {
+        text-align: left !important;
+        margin: 6px; }
 
     /* Shadow */
     if checkbox-shadow {
@@ -700,7 +719,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
 
         #player-container {
             box-shadow: 0px 10px 17px shadow; }
-    
+
         .pure-u-md-20-24 > .h-box > img {
             box-shadow: 0px 1px 13px shadow; } } }
 
@@ -715,12 +734,12 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
             --fg-link: link;
             --fg-linkHover: link-h;
             --edge-table: transparent; }
-        
+
         ::selection,
         ::selection {
             background-color: fg-1;
             color: bg-1; }
-        
+
         .logo {
             filter: invert(100) } }
 
@@ -738,7 +757,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         ::selection {
             background-color: fg-1;
             color: bg-1; } }
-            
+
     :root {
         if select-color=="Colourful" {
             --fg-header: red-1;
@@ -747,7 +766,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         if select-color=="Light" {
             --fg-header: light-1;
             --fg-dim: light-2; } }
-            
+
     /* Hovering over links */
     a:hover {
         color: var(--fg-linkHover); }
@@ -756,7 +775,9 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         border: transparent;
         background: var(--fg-dim);
         color: var(--fg-primary); }
-    
+
     /* Font */
-    html, body, .pure-g [class*="pure-u"] {
+    html,
+    body,
+    .pure-g [class*="pure-u"] {
         font-family: Roboto, Arial, sans-serif !important; } }
