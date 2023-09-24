@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Invidious - Dark Theme
 @namespace      https://github.com/Tsyron/Invidious-Theme
-@version        1.0.9
+@version        1.1.0
 @license        GPLv3
 @description    Invidious Website In Dark Theme/Style
 @author         Tsyron
@@ -9,9 +9,11 @@
 
 @var            select select-color "Colours" ["Colourful", "Light"]
 
-@var            range range-corners "Corners" [18, 0, 35, "px"]
+@var            range range-corners "Corner Radius" [18, 0, 35, "px"]
 
-@var            range range-searchbox "Searchbox Corners" [18, 0, 18, "px"]
+@var            range range-searchbox "Searchbox Corner Radius" [18, 0, 18, "px"]
+
+@var            checkbox checkbox-borders "Borders" 0
 
 @var            select select-font "Font" ["YouTube", "Default", "Monospace"]
 
@@ -32,7 +34,7 @@ url-prefix("https://iv."),
 url-prefix("https://vid."),
 url-prefix("https://y.com."),
 url-prefix("https://yt"),
-url-prefix("tube."),
+url-prefix("https://tube."),
 domain("watch.thekitty.zone"),
 domain("onion.tube"),
 domain("not-ytb.blocus.ch"),
@@ -172,9 +174,18 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
                 color: fg-1; } }
 
         /* General Button */
-        button.pure-button.pure-button-primary {
-            background-color: bg-2;
-            color: fg-1; }
+        .pure-button-primary,
+        .pure-button-secondary,
+        .pure-button-primary:focus,
+        .pure-button-secondary:focus {
+            border: transparent;
+            background-color: bg-2 !important;
+            color: fg-1 !important; }
+
+        .pure-button-primary:hover,
+        .pure-button-secondary:hover {
+            background-color: bg-3 !important;
+            color: fg-1 !important; }
 
         /* Checkbox & Radio: Background color */
         input[type="checkbox"],
@@ -227,13 +238,13 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         p.channel-name:hover {
             color: link-h; }
 
-        /* Search: Filter box */
+        /* Search: Filters */
         #filters-box {
             background: bg-1 !important; }
 
         /* Searchbox: background color */
         .pure-form input[type="search"] {
-            border: fg-1;
+            border: transparent;
             background-color: bg-2;
             color: fg-1; }
 
@@ -301,7 +312,19 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
             /* Video Player: Sliders */
             .vjs-play-progress,
             .vjs-volume-level {
-                color: fg-1; } }
+                color: fg-1; }
+            
+            /* Video Player: Tooltip */
+            .vjs-time-tooltip {
+                font-family: sans-serif;
+                border-radius: range-corners;
+                top: -3.8em;
+                background-color: bg-2;
+                color: fg-1; }
+            
+            .vjs-vtt-thumbnail-display {
+                bottom: 195%;
+                border-radius: range-corners; } }
 
         /* Video player: Controls: Progress Bar: Color */
         .video-js.player-style-invidious .vjs-play-progress {
@@ -365,12 +388,56 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
 
         /* Placeholder */
         ::placeholder {
-            color: fg-1; } }
+            color: fg-1; }
+
+        if checkbox-borders {
+            .pure-form {
+                input[type="color"],
+                input[type="date"],
+                input[type="datetime-local"],
+                input[type="datetime"],
+                input[type="email"],
+                input[type="month"],
+                input[type="number"],
+                input[type="password"],
+                input[type="tel"],
+                input[type="text"],
+                input[type="time"],
+                input[type="url"],
+                input[type="week"],
+                input[type="search"],
+                select,
+                textarea {
+                    border: 1px solid bg-3 !important; } }
+
+            input[type='range']::-webkit-slider-thumb {
+                border-right: 1px solid bg-3 !important; }
+
+            input[type="checkbox"],
+            input[type='radio'],
+            input[type='range'] {
+                border: 1px solid bg-3 !important; }
+
+            .pure-button-primary,
+            .pure-button-primary:focus,
+            .pure-button-primary:hover,
+            .pure-button-secondary,
+            .pure-button-secondary:focus,
+            .pure-button-secondary:hover {
+                border: 1px solid bg-3 !important; }
+
+            #subscribe,
+            #subscribe:hover,
+            a.channel-owner,
+            a.channel-owner:hover {
+                border: 1px solid var(--Color2) !important; } } }
 
     /* General Button */
-    button.pure-button.pure-button-primary {
-        border-radius: range-corners !important;
-        height: 36px; }
+    .pure-button-primary,
+    .pure-button-secondary {
+        padding: .5em 1em;
+        margin: 0px;
+        border-radius: range-corners !important; }
 
     /* Checkbox & Radio */
     input[type="checkbox"],
@@ -402,7 +469,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         left: 0;
         width: 100%;
         height: 100%;
-        line-height: 1.5em;
+        line-height: 1.3em;
         text-align: center; }
 
     /* Checkbox: Autoplay */
@@ -512,6 +579,10 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         i.icon.ion-md-jet:hover {
             color: var(--Color3Hover) !important; } }
 
+    /* Home Screen: filters */
+    #filters-apply {
+        text-align: right; }
+
     /* Searchbox */
     .pure-form input[type="search"] {
         box-shadow: transparent;
@@ -525,10 +596,6 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         border-radius: range-corners;
         padding: 12px;
         transition: all 0.2s; }
-
-    .h-box {
-        padding-left: 1.1em;
-        padding-right: 1.1em; }
 
     .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box:hover {
         transform: scale(1.025);
@@ -597,7 +664,7 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
 
         .vjs-share__social_mail,
         .vjs-share__social_email {
-            background-color: var(--Color4); }
+            background-color: var(--Color1); }
 
         /* Video player: Settings */
         .vjs-videojs-share_open .vjs-modal-dialog .vjs-close-button::before {
@@ -637,16 +704,25 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
     .pure-g:not(.h-box) > .pure-u-md-1-4 .h-box {
         margin: 5px; }
 
+    @media screen and (min-width: 64em) {
+        .pure-u-lg-3-5 .title {
+            margin: 0px; } }
+
+    /* Description: Title */
+    @media screen and (max-width: 767px) {
+        h1 {
+            margin: .67em 0; } }
+
     /* Description: Subscribe button */
     #subscribe {
         border-radius: range-corners;
-        background-color: var(--Color1);
+        background-color: var(--Color1) !important;
         float: right;
         padding: 7.5px;
-        margin-top: -55px; }
+        /*margin-top: -55px;*/ }
 
     #subscribe:hover {
-        background-color: var(--Color1Hover); }
+        background-color: var(--Color1Hover) !important; }
 
     /* Description: Download Multiple Section Bold */
     select#download_widget {
@@ -702,6 +778,10 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         opacity: 1;
         transition: all 0.2s; }
 
+    /* Channel, Trending UI Links */
+    .pure-g .pure-u-1 .pure-md-1-3 {
+        margin-bottom: 0.5em; }
+
     /* White Line (Spacer/padding) */
     hr {
         margin: 1.3em 0; }
@@ -712,9 +792,27 @@ domain("pjsfi2szfkb4guqzmfmlyq4no46fayertjrwt4h2uughccrh2lvq.b32.i2p") {
         padding: 1.3em; }
 
     /* Settings */
-    .pure-form-aligned .pure-control-group label {
+    .pure-form-aligned .pure-control-group label,
+    .pure-form-aligned .pure-control-group a,
+    .pure-form-aligned .pure-control-group input {
         text-align: left !important;
         margin: 6px; }
+
+    .pure-form-aligned .pure-control-group select {
+        margin: 0px 0px 0px 6px }
+
+    .pure-form-aligned .pure-controls {
+        margin: 0px;
+        text-align: right; }
+
+    #max_results {
+        width: 209.783px; }
+
+    @media screen and (max-width: 1280px) {
+        .pure-form-aligned .pure-control-group label,
+        .pure-form-aligned .pure-control-group a,
+        .pure-form-aligned .pure-controls {
+            padding: 0px; } }
 
     /* Shadow */
     if checkbox-shadow {
